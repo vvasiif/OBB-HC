@@ -1,0 +1,51 @@
+.bg{
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
+}
+
+h3{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+}
+
+
+.conatiner{
+    width: 500px;
+    height: fit-content;
+    background-color: rgba(0, 0, 0, 0.75);
+    top: 50%;
+    bottom: 50%;
+    left: 50%;
+    right: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: white;
+}
+
+.form-group{
+    margin: 20px;
+}
+
+.custom-file{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.btn{
+    top: 50%;
+    left: 50%;
+    margin: 20px;
+}
+
+text{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
