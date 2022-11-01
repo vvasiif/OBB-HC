@@ -9,6 +9,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     $password = $_POST['password'];
     $city = $_POST['city'];
     $phone = $_POST['phone'];
+    $dob = $_POST['dob'];
     $gender = $_POST['gender'];
     $role = "pat";
 
@@ -16,12 +17,12 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     $run = mysqli_query($conn,$query);
     $data = mysqli_fetch_array($run);
     if($data > 0){
-        echo '<script>alert("Elami already exists!")</script>';
+        echo '<script>alert("This e-mail already exists!")</script>';
     }
     else{
 
-    $query = "insert into users (username,email,password,phone,city,gender,role)
-    value ('$username','$email','$password','$phone','$city','$gender','$role')";
+    $query = "insert into users (username,email,password,phone,dob,city,gender,role)
+    value ('$username','$email','$password','$phone','$dob','$city','$gender','$role')";
 
     mysqli_query($conn, $query);
 
@@ -96,6 +97,11 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                     <label for="inputPhone">Phone Number</label>
                     <input type="tel" class="form-control" name="phone" id="inputPhone" placeholder="03*********"
                         onkeypress='return event.charCode>=48 && event.charCode<=57' pattern="[0-9]{11}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dateofbirth">Date of birth</label>
+                    <input type="date" class="form-control" name="dob" id="dob" required>
                 </div>
 
                 <div class="form-group">
