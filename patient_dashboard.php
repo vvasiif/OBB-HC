@@ -1,18 +1,16 @@
 <?php
 session_start();
 
-echo "Welcome " . $_SESSION['email'];
+// echo "Welcome " . $_SESSION['email'];
 ?>
 <!doctype html>
     <html lang="en">
       <head>
       <link rel="stylesheet" type="text/css" href="style.css?v=<?=rand(1,1000)?>">        
       <title>OBB&HC</title>
-        <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
      
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -26,6 +24,9 @@ echo "Welcome " . $_SESSION['email'];
       <a class="nav-link" href="signout.php">Sign Out</a>
       </li>
       <li class="nav-item">
+      <a class="nav-link" href="profile.php">Profile</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="about.php">About us</a>
       </li>
       <li class="nav-item">
@@ -34,16 +35,23 @@ echo "Welcome " . $_SESSION['email'];
     </ul>
   </div>
 </nav>
+
+
 </head>
 
 <body>
-  <div class="bg">
-  <div class="conatiner">
-  <h3>Patient</h3>
-  <button type="button" class="btn btn-light">Health Consultancy</button>
-  <button type="button" class="btn btn-light">Blood Bank</button>
-  </div>
-  
-  </div>
+    <div class="bg">
+        <div class="conatiner-con">
+        <table>
+  <tr>
+    <th><a href="bb.php"><button type="button" class="btn-large">Blood Bank Portal</button></a></th>
+    <th><a href="hc.php"><button type="button" class="btn-large">Health Consultancy</button></a></th>
+  </tr>
+</table>
+        </div>
+    </div>
 </body>
+
+
+
 </html>

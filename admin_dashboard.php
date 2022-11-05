@@ -27,6 +27,9 @@ echo "Welcome " . $_SESSION['email'];
       <a class="nav-link" href="signout.php">Sign Out</a>
       </li>
       <li class="nav-item">
+      <a class="nav-link" href="profile.php">Profile</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="about.php">About us</a>
       </li>
       <li class="nav-item">

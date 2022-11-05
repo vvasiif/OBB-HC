@@ -1,8 +1,31 @@
 <?php
-session_start();
+include_once 'connection.php';
 
-echo "Welcome " . $_SESSION['email'];
+
+if($_SERVER['REQUEST_METHOD']=="POST")
+{
+  session_start();
+
+$email = $_SESSION['email'];
+
+echo $email;
+    $newpassword = $_POST['password'];
+
+    $query = "Select * FROM users WHERE email = ('$email')";
+    $run = mysqli_query($conn,$query);
+    $row = mysqli_fetch_array($run);
+
+    $query = "UPDATE users SET password = '$newpassword'  where email= '$email'";
+    echo '<script>alert("Password changes!")</script>';
+    
+
+    header("Location: profile.php");
+    die;
+
+}
+
 ?>
+
 <!doctype html>
     <html lang="en">
       <head>
@@ -24,8 +47,8 @@ echo "Welcome " . $_SESSION['email'];
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
       <a class="nav-link" href="signout.php">Sign Out</a>
-          </li>
-          <li class="nav-item">
+      </li>
+      <li class="nav-item">
       <a class="nav-link" href="profile.php">Profile</a>
       </li>
       <li class="nav-item">
@@ -43,7 +66,13 @@ echo "Welcome " . $_SESSION['email'];
 <body>
   <div class="bg">
   <div class="conatiner">
-  <h3>Consultant</h3>
+  <form action="" method="POST">
+  <div class="form-group">
+                    <label for="inputPassword">Enter a new password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" value="Submit" name="submit" class="btn btn-primary">Update</button>
+                </form>
   </div>
   </div>
 </body>
