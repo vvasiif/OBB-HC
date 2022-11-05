@@ -35,6 +35,7 @@ echo "Welcome " . $_SESSION['email'];
       <li class="nav-item">
         <a class="nav-link" href="contact.php">Contact</a>
       </li>
+      <!-- test -->
     </ul>
   </div>
 </nav>
