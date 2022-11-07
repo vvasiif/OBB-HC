@@ -1,5 +1,5 @@
 .bg{
-    background-image: url(background.jpg);
+    background-image: url(images/background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
@@ -18,7 +18,24 @@ h3{
 }
 
 
-.conatiner-con{
+.conatiner{
+    width: 500px;
+    height: fit-content;
+    background-color: rgba(0, 0, 0, 0.75);
+    top: 50%;
+    bottom: 50%;
+    left: 50%;
+    right: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: white;
+    padding: 20px;
+}
+
+
+.conatiner2{
     width: fit-content;
     height: fit-content;
     background-color: rgba(0, 0, 0, 0.75);
