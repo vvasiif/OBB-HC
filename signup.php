@@ -60,12 +60,6 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 <li class="nav-item">
                     <a class="nav-link" href="con_signup.php">Consultant Sign Up</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about.php">About us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.php">Contact</a>
-                </li>
             </ul>
         </div>
     </nav>

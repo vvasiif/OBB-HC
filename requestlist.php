@@ -2,11 +2,7 @@
 include_once 'connection.php';
 require_once("signinnavbar.php");
 
-session_start();
-
 ?>
-
-
 
 
 <!doctype html>
