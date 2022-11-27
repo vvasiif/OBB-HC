@@ -1,9 +1,29 @@
 <?php
-session_start();
+include_once 'connection.php';
 require_once("signinnavbar.php");
 
-// echo "Welcome " . $_SESSION['email'];
+session_start();
+
+if($_SERVER['REQUEST_METHOD']=="POST")
+{
+    $bloodtype = $_POST['bloodtype'];
+    $findordonate = $_POST['findordonate'];
+    
+$_SESSION['bloodtype']=$bloodtype;
+
+                if($findordonate=="donate"){
+                    header("Location: donateform.php");
+                }
+                elseif($findordonate=="find"){
+                    header("Location: donatelist.php");
+                }
+            }
+            
 ?>
+
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -19,33 +39,36 @@ require_once("signinnavbar.php");
 <body>
     <div class="bg">
         <div class="conatiner">
-            <h3>Bllod Bank Portal</h3>
+            <h3>Blood Bank Portal</h3>
             <form action="" method="POST">
                 <div class="form-group">
-                    <label for="input">Blood Type</label><br>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Select Blood Type</option>
-                        <option>A+</option>
-                        <option>A-</option>
-                        <option>B+</option>
-                        <option>B-</option>
-                        <option>AB+</option>
-                        <option>AB-</option>
-                        <option>O+</option>
-                        <option>O-</option>
-                    </select><br> <br>
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label for="input">
+                        <h5>Blood Type</h5>
+                    </label>
+                    <select name="bloodtype" class="form-select" aria-label="Default select example">
+                        <option value="Select Blood Type">Select Blod Type</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                    <br>
+                    <input class="form-check-input" value="find" type="radio" name="findordonate" id="flexRadioDefault1" checked required>
                     <label class="form-check-label" for="flexRadioDefault1">
                         Find blood
                     </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <br>
+                    <input class="form-check-input" value="donate" type="radio" name="findordonate" id="flexRadioDefault2" required>
                     <label class="form-check-label" for="flexRadioDefault2">
                         Donate blood
-                </div>
+                    </label>
+                    <br>
 
-                <button type="submit" value="Submit" name="submit" class="btn btn-primary">Next</button>
+                    <button type="submit" value="Submit" name="submit" class="btn btn-primary">Next</button>
             </form>
         </div>
     </div>
