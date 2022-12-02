@@ -10,7 +10,7 @@ require_once("postnav.php");
 
 <body>
   <div class="bg">
-  <div class="conatiner">
+  <div class="container">
   <h3>Consultant</h3>
   </div>
   </div>

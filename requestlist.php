@@ -19,7 +19,7 @@ require_once("signinnavbar.php");
 
 <body>
     <div class="bg">
-        <div class="conatiner">
+        <div class="container">
             <h3>Blood Requests</h3>
         
         </div>

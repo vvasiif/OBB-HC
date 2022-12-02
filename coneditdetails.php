@@ -1,90 +1,71 @@
 <?php
 include_once 'connection.php';
-include_once 'prenav.php';
+require_once("postnav.php");
+
+$email = $_SESSION['email'];
+
+$query = "select * from users where email='$email'";
+$run = mysqli_query($conn,$query);
+
+while($row = mysqli_fetch_array($run)){
+    $username = $row['username'];
+    $password = $row['password'];
+    $dob = $row['dob'];
+    $city = $row['city'];
+    $cnic = $row['cnic'];
+    $phone = $row['phone'];
+    $gender = $row['gender'];
+    $qualification = $row['qualification'];
+    $file = $row['file'];
+}
+
+
 
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
     $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $city = $_POST['city'];
-    $cnic = $_POST['cnic'];
     $phone = $_POST['phone'];
-    $dob = $_POST['dob'];
-    $gender = $_POST['gender'];
+    $city = $_POST['city'];
     $qualification = $_POST['qualification'];
     $file = $_POST['file'];
-    $role = "con";
 
-    $query = "Select * FROM users WHERE email = ('$email')";
-    $run = mysqli_query($conn,$query);
-    $data = mysqli_fetch_array($run);
-    if($data > 0){
-        echo '<script>alert("Elami already exists!")</script>';
-    }
-    else{
-  
-
-    $query = "insert into users (username,email,password,cnic,phone,dob,city,gender,role,qualification,file) 
-    value ('$username','$email','$password','$cnic','$phone','$dob','$city','$gender','$role','$qualification','$file')";
-
-    mysqli_query($conn, $query);
-
-    header("Location: signin.php");
-    die;
-}
-}
+    mysqli_query($conn,"UPDATE users set username='" . $username . "' WHERE email='" . $email . "'");
+    mysqli_query($conn,"UPDATE users set phone='" . $phone . "' WHERE email='" . $email . "'");
+    mysqli_query($conn,"UPDATE users set city='" . $city . "' WHERE email='" . $email . "'");
+    mysqli_query($conn,"UPDATE users set qualification='" . $qualification . "' WHERE email='" . $email . "'");
+    mysqli_query($conn,"UPDATE users set file='" . $file . "' WHERE email='" . $email . "'");
+  }
+header('profile.php');
 
 ?>
 
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-
-
 </head>
 
 <body>
     <div class="bg">
         <div class="container">
+            <h3>Edit Details</h3>
             <form action="" method="POST">
-
                 <div class="form-group">
-                    <h3>Consultant Sign Up</h3>
-                    <label for="inputName">Full name</label>
-                    <input type="text" class="form-control" id="inputName" name="username" required>
+                    <label for="text">Name</label>
+                    <input type="text" class="form-control" value="<?php echo $username ?>" id="inputName"
+                        name="username" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="inputEmail">Email</label>
-                    <input type="email" class="form-control" id="inputEmail" name="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="inputPassword">Password</label>
-                    <input type="password" class="form-control" id="inputPassword" name="password" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="inputPhone">Phone Number</label>
-                    <input type="tel" class="form-control" name="phone" id="inputPhone" placeholder="03*********"
-                        onkeypress='return event.charCode>=48 && event.charCode<=57' pattern="[0-9]{11}" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="dateofbirth">Date of birth</label>
-                    <input type="date" class="form-control" name="dob" id="dob" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="inputCnic">CNIC</label>
-                    <input type="text"  maxlength="13" class="form-control" name="cnic" id="inputCnic" required>
+                    <label for="text">Phone number</label>
+                    <input type="text" class="form-control" value="<?php echo $phone ?>" id="inputName" name="phone"
+                        required>
                 </div>
 
                 <div class="form-group">
                     <label for="inputCity">City</label>
                     <select id="inputCity" class="form-control" name="city" required>
-                        <option value="Select City">Select City</option>
+                    <option value="<?php echo $city ?>" selected><?php echo $city ?></option>
                         <option value="Islamabad">Islamabad</option>
                         <option value="Ahmed Nager Chatha">Ahmed Nager Chatha</option>
                         <option value="Ahmadpur East">Ahmadpur East</option>
@@ -326,26 +307,16 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 </div>
 
                 <div class="form-group">
-                    <label for="inputGender">Gender</label>
-                    <select id="inputGender" class="form-control" name="gender" required>
-                        <option>Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
                     <label for="inputQualification">Qualification</label>
-                    <input type="text" line class="form-control" id="inputName" name="qualification" required>
+                    <input type="text" line class="form-control" value="<?php echo $qualification ?>" id="inputName" name="qualification" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="inputFileName">Upload valid certificate</label>
-                    <input type="file" class="form-control" name="file" id="customFile" />
+                    <label for="inputFileName">Edit valid certificate</label>
+                    <input type="file" class="form-control" value="<?php echo $file ?>" name="file" id="customFile" />
                 </div>
-                <div class="form-group">
-                </div>
-                <button type="submit" value="Submit" name="submit" class="btn btn-primary">Sign up</button>
+
+                <button type="submit" value="Submit" name="submit" class="btn btn-primary">Update</button>
             </form>
         </div>
     </div>

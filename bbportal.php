@@ -41,38 +41,13 @@ $_SESSION['bloodtype']=$bloodtype;
 
 <body>
     <div class="bg">
-        <div class="conatiner">
-            <h3>Blood Bank Portal</h3>
-            <form action="" method="POST">
-                <div class="form-group">
-                    <label for="input">
-                        <h5>Blood Type</h5>
-                    </label>
-                    <select name="bloodtype" class="form-select" aria-label="Default select example">
-                        <option value="Select Blood Type">Select Blod Type</option>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
-                    </select>
-                    <br>
-                    <input class="form-check-input" value="find" type="radio" name="findordonate" id="flexRadioDefault1" checked required>
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        Find blood
-                    </label>
-                    <br>
-                    <input class="form-check-input" value="donate" type="radio" name="findordonate" id="flexRadioDefault2" required>
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        Donate blood
-                    </label>
-                    <br>
-
-                    <button type="submit" value="Submit" name="submit" class="btn btn-primary">Next</button>
-            </form>
+        <div class="container">
+        <table>
+  <tr>
+    <th><a href="addavail.php"><button type="button" class="btn-large">Donate Blood</button></a></th>
+    <th><a href="hcportal.php"><button type="button" class="btn-large">Get Blood</button></a></th>
+  </tr>
+</table>
         </div>
     </div>
 </body>

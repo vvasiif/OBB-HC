@@ -117,16 +117,11 @@ input[type="checkbox"]{
 
 /* navbar end */
 
-.bg{
+body{
     background-image: url(images/background.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     height: 100vh;
-    position: relative;
-}
-
-body{
-    height: 100%;
 }
 
 
@@ -134,24 +129,39 @@ h3{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     color: white;
+    font-weight: bold;
+  
 }
 
 
-.conatiner{
-    width: 500px;
+.container{
     height: fit-content;
     background-color: rgba(0, 0, 0, 0.75);
-    top: 50%;
-    bottom: 50%;
-    left: 50%;
-    right: 50%;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    box-sizing: border-box;
+    margin-top: 50px;
     border-radius: 10px;
     color: white;
     padding: 20px;
 }
+
+.list{
+  margin: 5px;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  align-items: center;
+  left: 5%;
+  width: 90%;
+  height: fit-content;
+  padding: 10px;
+}
+
+.listcontent{
+  border: 5px black;
+  width: 90%;
+  left: 5%;
+  padding: 10px;
+}
+
 
 
 .conatiner2{
@@ -197,6 +207,11 @@ text{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
+.msg{
+  font-size: 25px;
+  color: red;
+  text-align: center;
+  font-style: italic;
+}
 
 

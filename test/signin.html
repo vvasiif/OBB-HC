@@ -1,0 +1,82 @@
+<?php
+include_once 'connection.php';
+require_once 'prenav.php';
+
+session_start();
+
+if($_SERVER['REQUEST_METHOD']=="POST")
+{
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $query = "select password from users where email = '$email'";
+    $run = mysqli_query($conn,$query);
+    if($row=mysqli_fetch_array($run)){
+        if($password==$row['password']){
+            $query = "select role from users where email = '$email'";
+            $run = mysqli_query($conn,$query);
+            if($row=mysqli_fetch_array($run)){
+                if($row["role"]=="pat"){
+                    $_SESSION['email']=$email;
+                    header("Location: patient_dashboard.php");
+                    die;
+                }
+                elseif($row["role"]=="con"){
+                    $_SESSION['email']=$email;
+                     header("Location: consultant_dashboard.php");
+                    die;
+                }
+                elseif($row["role"]=="adm"){
+                    $_SESSION['email']=$email;
+                 header("Location: admin_dashboard.php");
+                    die;
+                } 
+        }
+        
+    }
+    $message="You entered the wrong password!";
+    } 
+    $message="Account do not exist!";
+}
+?>
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <title>OBB&HC</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+    <div class="container">
+        <form action="" method="POST">
+            <div class="form-group">
+                <h3>Sign In</h3>
+                <label for="inputEmail">Email</label>
+                <input type="email" class="form-control" id="inputEmail" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" name="password" required>
+            </div>
+            <button type="submit" value="Submit" name="submit" class="btn btn-primary">Sign in</button>
+        </form>
+        <div class="msg">
+            <?php if(isset($message)) { echo $message; } ?>
+        </div>
+    </div>
+</body>
+
+</html>

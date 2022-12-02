@@ -19,7 +19,7 @@ if($_SESSION['email']==NULL) {
 
 <body>
   <div class="bg">
-  <div class="conatiner">
+  <div class="container">
   <h3>HC Portal</h3>
   </div>
   </div>

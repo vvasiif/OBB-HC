@@ -1,5 +1,6 @@
 <?php
 include_once 'connection.php';
+include_once 'prenav.php';
 
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
@@ -9,6 +10,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     $password = $_POST['password'];
     $city = $_POST['city'];
     $phone = $_POST['phone'];
+    $cnic = $_POST['cnic'];
     $dob = $_POST['dob'];
     $gender = $_POST['gender'];
     $role = "pat";
@@ -21,8 +23,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     }
     else{
 
-    $query = "insert into users (username,email,password,phone,dob,city,gender,role)
-    value ('$username','$email','$password','$phone','$dob','$city','$gender','$role')";
+    $query = "insert into users (username,email,cnic,password,phone,dob,city,gender,role)
+    value ('$username','$email','$cnic','$password','$phone','$dob','$city','$gender','$role')";
 
     mysqli_query($conn, $query);
 
@@ -36,39 +38,12 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css?v=<?=rand(1,1000)?>">
-    <title>Sign Up</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">OBB&HC</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="signin.php">Sign In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="con_signup.php">Consultant Sign Up</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
 
 </head>
 
 <body>
     <div class="bg">
-        <div class="conatiner">
+        <div class="container">
             <form action="" method="POST">
 
                 <div class="form-group">
@@ -88,8 +63,13 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 </div>
 
                 <div class="form-group">
+                    <label for="inputCnic">CNIC</label>
+                    <input type="text"  maxlength="13" class="form-control" name="cnic" id="inputCnic" required>
+                </div>
+
+                <div class="form-group">
                     <label for="inputPhone">Phone Number</label>
-                    <input type="tel" class="form-control" name="phone" id="inputPhone" placeholder="03*********"
+                    <input type="tel" class="form-control" maxlength="11" name="phone" id="inputPhone" placeholder="03*********"
                         onkeypress='return event.charCode>=48 && event.charCode<=57' pattern="[0-9]{11}" required>
                 </div>
 
@@ -346,8 +326,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                     <label for="inputGender">Gender</label>
                     <select id="inputGender" class="form-control" name="gender" required>
                         <option>Select Gender</option>
-                        <option value="m">Male</option>
-                        <option value="f">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                     </select>
                 </div>
 

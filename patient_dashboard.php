@@ -10,7 +10,7 @@ require_once("postnav.php");
 
 <body>
     <div class="bg">
-        <div class="conatiner2">
+        <div class="container">
         <table>
   <tr>
     <th><a href="bbportal.php"><button type="button" class="btn-large">Blood Bank Portal</button></a></th>

@@ -33,12 +33,9 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         }
         
     }
-    echo '<script>alert("You entered the wrong password!")</script>';
-   
-    die;
-    header("Location: signin.php");
+    $message="You entered the wrong password!";
     } 
-    echo '<script>alert("Account do not exist!")</script>';
+    $message="Account do not exist!";
 }
 ?>
 
@@ -53,7 +50,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
 <body>
     <div class="bg">
-        <div class="conatiner">
+        <div class="container">
             <form action="" method="POST">
                 <div class="form-group">
                     <h3>Sign In</h3>
@@ -67,6 +64,9 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 </div>
                 <button type="submit" value="Submit" name="submit" class="btn btn-primary">Sign in</button>
             </form>
+            <div class="msg">
+                <?php if(isset($message)) { echo $message; } ?>
+            </div>
         </div>
     </div>
 </body>
