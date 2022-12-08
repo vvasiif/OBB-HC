@@ -15,18 +15,19 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     $qualification = $_POST['qualification'];
     $file = $_POST['file'];
     $role = "con";
+    $status = "no";
 
     $query = "Select * FROM users WHERE email = ('$email')";
     $run = mysqli_query($conn,$query);
     $data = mysqli_fetch_array($run);
     if($data > 0){
-        echo '<script>alert("Elami already exists!")</script>';
+        $message="A user with this e-mail already exists";
     }
     else{
   
 
-    $query = "insert into users (username,email,password,cnic,phone,dob,city,gender,role,qualification,file) 
-    value ('$username','$email','$password','$cnic','$phone','$dob','$city','$gender','$role','$qualification','$file')";
+    $query = "insert into users (username,email,password,cnic,phone,dob,city,gender,role,qualification,file,status) 
+    value ('$username','$email','$password','$cnic','$phone','$dob','$city','$gender','$role','$qualification','$file','$status')";
 
     mysqli_query($conn, $query);
 
@@ -328,7 +329,6 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 <div class="form-group">
                     <label for="inputGender">Gender</label>
                     <select id="inputGender" class="form-control" name="gender" required>
-                        <option>Select Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
@@ -347,6 +347,10 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 </div>
                 <button type="submit" value="Submit" name="submit" class="btn btn-primary">Sign up</button>
             </form>
+
+            <div class="msg">
+                <?php if(isset($message)) { echo $message; } ?>
+            </div>
         </div>
     </div>
 </body>

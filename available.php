@@ -6,15 +6,27 @@ $email = $_SESSION['email'];
 
 // echo "Welcome " . $_SESSION['email'];
 
+
+$query = "select available from bloodbanklist where email = '$email'";
+            $run = mysqli_query($conn,$query);
+            if($row=mysqli_fetch_array($run)){
+                if($row["available"]=="yes"){
+                    $header = "You're listed as a blood donor";
+                }
+            }
+
+
+
 if($_SERVER['REQUEST_METHOD']=="POST"){
+    $email = $_SESSION['email'];
 $availablity = $_POST['availablity'];
+mysqli_query($conn,"DELETE FROM bloodbanklist WHERE email='" . $email . "'");
+header("Location: bbportal.php");
 
-mysqli_query($conn,"UPDATE bloodbanklist set available='" . $availablity . "' WHERE email='" . $email . "'");
-      $message="Avaiability updated!";
 
-$query = "select * from bloodbanklist where email = '$email'";
-$run = mysqli_query($conn,$query);
 
+// $query = "select * from bloodbanklist where email = '$email'";
+// $run = mysqli_query($conn,$query);
 }
 
 
@@ -28,29 +40,21 @@ $run = mysqli_query($conn,$query);
 <body>
     <div class="bg">
         <div class="container">
-            <h3>You're listed as a donor!</h3><br>
+        <form action="" method="POST">
+            <h3>You're listed as a donor</h3><br>
             <div class="center-box">
-                <input type="radio" name="availablity" checked="checked" value="Available"> Available<br>
-                <input type="radio" name="availablity" value="Unavailable"> Unavailable
+                <button type="" value="no" name="availablity" class="btn btn-light">Remove your listing as a donor!</button> <br>
+                <a class="btn btn-primary" href="dashboard-nav.php">Back to dashboard</a>
+
             </div>
-            <button type="submit" value="Submit" name="submit" class="btn btn-primary">Update Availability</button>
-        </div>
-        <div class="msg">
+
+            <div class="msg">
                 <?php if(isset($message)) { echo $message; } ?>
             </div>
-    </div>
+        </form>
+        </div>
 </body>
 
 
 
 </html>
-
-<script type="text/javascript">
-function preventBack() {
-    window.history.forward();
-}
-setTimeout("preventBack()", 0);
-window.onunload = function() {
-    null
-};
-</script>

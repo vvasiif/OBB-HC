@@ -54,7 +54,6 @@ header('profile.php');
             <form action="" method="POST">
                 <div class="form-group">
                     <label for="inputPassword">Current password</label>
-
                     <input type="password" class="form-control" id="password" name="currentpassword" required><br>
                     <label for="inputPassword">Enter a new password</label>
                     <input type="password" class="form-control" id="password" name="newpassword" required><br>

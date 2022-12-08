@@ -9,10 +9,13 @@ require_once("postnav.php");
 </head>
 
 <body>
-  <div class="bg">
-  <div class="container">
-  <h3>Consultant</h3>
-  </div>
-  </div>
+<div class="container">
+        <div class="col-lg-12">
+        <h3>Consultant Dashboard</h3>    
+
+
+        </div>
+
+    </div>
 </body>
 </html>

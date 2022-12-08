@@ -16,26 +16,38 @@ if($_SERVER['REQUEST_METHOD']=="POST")
             $run = mysqli_query($conn,$query);
             if($row=mysqli_fetch_array($run)){
                 if($row["role"]=="pat"){
+                    $_SESSION['role']=$row["role"];
                     $_SESSION['email']=$email;
+                    $_SESSION['log']="yes";
                     header("Location: patient_dashboard.php");
                     die;
                 }
                 elseif($row["role"]=="con"){
+                    $_SESSION['role']=$row["role"];
                     $_SESSION['email']=$email;
+                    $_SESSION['log']="yes";
                      header("Location: consultant_dashboard.php");
                     die;
                 }
                 elseif($row["role"]=="adm"){
+                    $_SESSION['role']=$row["role"];
                     $_SESSION['email']=$email;
+                    $_SESSION['log']="yes";
                  header("Location: admin_dashboard.php");
                     die;
                 } 
         }
-        
     }
+    else{
     $message="You entered the wrong password!";
-    } 
+    // $message="Account do not exist!";
+}
+    }
+    else
+     {
+        // $message="You entered the wrong password!";
     $message="Account do not exist!";
+}
 }
 ?>
 
@@ -45,7 +57,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 <html lang="en">
 
 <head>
-   
+
 </head>
 
 <body>

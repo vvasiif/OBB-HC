@@ -16,19 +16,17 @@ if($_SESSION['email']==NULL) {
 <html lang="en">
 
 <body>
-    <div class="bg">
-        <div class="container">
-            <table>
-                <tr>
-                    <th><a href="bbportal.php"><button type="button" class="btn-large">Blood Bank Portal</button></a></th>
-                    <th><a href="hcportal.php"><button type="button" class="btn-large">Health Consultancy</button></a></th>
-                </tr>
-            </table>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <a href="bbportal.php"><button type="button" class="btn-large">Blood Bank Portal</button></a>
+            </div>
+            <div class="col-lg-6">
+                <a href="hcportal.php"><button type="button" class="btn-large">Health Consultant Portal</button></a>
+            </div>
         </div>
     </div>
 </body>
-
-
 
 </html>
 

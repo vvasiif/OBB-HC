@@ -14,12 +14,13 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     $dob = $_POST['dob'];
     $gender = $_POST['gender'];
     $role = "pat";
+    
 
     $query = "Select * FROM users WHERE email = ('$email')";
     $run = mysqli_query($conn,$query);
     $data = mysqli_fetch_array($run);
     if($data > 0){
-        echo '<script>alert("This e-mail already exists!")</script>';
+        $message="A user with this e-mail already exists";
     }
     else{
 
@@ -335,6 +336,10 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 </div>
                 <button type="submit" value="Submit" name="submit" class="btn btn-primary">Sign up</button>
             </form>
+
+            <div class="msg">
+                <?php if(isset($message)) { echo $message; } ?>
+            </div>
         </div>
     </div>
 </body>

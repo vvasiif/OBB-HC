@@ -1,5 +1,5 @@
 <?php
-require_once('connection.php');
+require('connection.php');
 session_start();
 
 $email = $_SESSION['email'];
@@ -30,7 +30,7 @@ while($row = mysqli_fetch_array($run)){
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-      <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" type="text/css" href="style.css?v=<?=rand(1,1000)?>">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
      
@@ -45,8 +45,9 @@ while($row = mysqli_fetch_array($run)){
          <i class="fas fa-bars"></i>
          </label>
          <ul>
-            <li><a class="active" href="hcportal.php">Health Consultant</a></li>
-            <li><a class="active" href="bbportal.php">Blood Bank</a></li>
+            <!-- <li><a class="active" href="hcportal.php">Health Consultant</a></li>
+            <li><a class="active" href="bbportal.php">Blood Bank</a></li> -->
+            <li><a class="active" href="dashboard-nav.php">Dashboard</a></li>
             <li><a href="profile.php">
                <?php
                echo $username;

@@ -4,8 +4,6 @@ session_start();
 
 $email = $_SESSION['email'];
 
-
-
 if($email == NULL) { 
     header("Location: signin.php");
   }
@@ -13,6 +11,13 @@ if($email == NULL) {
     include_once 'postnav.php';
   }
 
+  $query = "select available from bloodbanklist where email = '$email'";
+  $run = mysqli_query($conn,$query);
+  if($row=mysqli_fetch_array($run)){
+      if($row["available"]=="yes"){
+          header("Location: available.php");
+      }
+  }
 
   $query = "select * from users where email='$email'";
   $run = mysqli_query($conn,$query);
@@ -28,8 +33,6 @@ if($email == NULL) {
     $file = $row['file'];
 }
 
-
-  
   if($_SERVER['REQUEST_METHOD']=="POST")
   {
 
@@ -43,8 +46,6 @@ if($email == NULL) {
 header("Location: available.php");
 }
 
-  
-  
   ?>
 
 <!doctype html>
