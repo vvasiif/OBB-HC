@@ -13,9 +13,14 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     $dob = $_POST['dob'];
     $gender = $_POST['gender'];
     $qualification = $_POST['qualification'];
+    $specialization = $_POST['specialization'];
+    $experience = $_POST['experience'];
     $file = $_POST['file'];
     $role = "con";
-    $status = "no";
+    $status = "wait";
+    $requestid = rand(1111111111,9999999999);
+    $fee = $_POST['fee'];
+
 
     $query = "Select * FROM users WHERE email = ('$email')";
     $run = mysqli_query($conn,$query);
@@ -25,9 +30,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     }
     else{
   
-
-    $query = "insert into users (username,email,password,cnic,phone,dob,city,gender,role,qualification,file,status) 
-    value ('$username','$email','$password','$cnic','$phone','$dob','$city','$gender','$role','$qualification','$file','$status')";
+    $query = "insert into users (username,email,password,cnic,phone,dob,city,gender,role,qualification,specialization,experience,file,status,userid) 
+    value ('$username','$email','$password','$cnic','$phone','$dob','$city','$gender','$role','$qualification','$specialization','$experience','$file','$status','$requestid')";
 
     mysqli_query($conn, $query);
 
@@ -67,7 +71,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 </div>
 
                 <div class="form-group">
-                    <label for="inputPhone">Phone Number</label>
+                    <label for="inputPhone">Phone number</label>
                     <input type="tel" class="form-control" name="phone" id="inputPhone" placeholder="03*********"
                         onkeypress='return event.charCode>=48 && event.charCode<=57' pattern="[0-9]{11}" required>
                 </div>
@@ -336,11 +340,57 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
                 <div class="form-group">
                     <label for="inputQualification">Qualification</label>
-                    <input type="text" line class="form-control" id="inputName" name="qualification" required>
+                    <select id="inputGender" class="form-control" name="qualification" required>
+                        <option value="BACHELORS OF MEDICINE AND BACHELORS OF SURGERY (MBBS)">BACHELORS OF MEDICINE AND BACHELORS OF SURGERY (MBBS)</option>
+                        <option value="BACHELORS OF DENTAL SURGERY (BDS)">BACHELORS OF DENTAL SURGERY (BDS)</option>
+                        <option value="DOCTOR IN PHARMACY (PHARM.D)">DOCTOR IN PHARMACY (PHARM.D)</option>
+                        <option value="BS PSYCHOLOGY">BS PSYCHOLOGY</option>
+                        <option value="BS MICROBIOLOGY">BS MICROBIOLOGY</option>
+                        <option value="BS BIOTECHNOLOGY">BS BIOTECHNOLOGY</option>
+                        <option value="BS BIOTECHNOLOGY">BS BIOTECHNOLOGY</option>
+                        <option value="BS BIOCHEMISTRY">BS BIOCHEMISTRY</option>
+                        <option value="BS MEDICAL LAB TECHNOLOGY (MLT)">BS MEDICAL LAB TECHNOLOGY (MLT)</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="inputFileName">Upload valid certificate</label>
+                    <label for="inputQualification">Specialization</label>
+                    <select id="inputGender" class="form-control" name="specialization" required>
+                        <option value="Family Medicine">Family Medicine</option>
+                        <option value="Internal Medicine">Internal Medicine</option>
+                        <option value="Pediatrician">Pediatrician</option>
+                        <option value="Obstetricians/gynecologist">Obstetricians/gynecologist</option>
+                        <option value="Cardiologist">Cardiologist</option>
+                        <option value="Oncologist">Oncologist</option>
+                        <option value="Gastroenterologist">Gastroenterologist</option>
+                        <option value="Pulmonologist">Pulmonologist</option>
+                        <option value="Infectious disease">Infectious disease</option>
+                        <option value="Nephrologist">Nephrologist</option>
+                        <option value="Endocrinologist">Endocrinologist</option>
+                        <option value="Ophthalmologist">Ophthalmologist</option>
+                        <option value="Otolaryngologist">Otolaryngologist</option>
+                        <option value="Dermatologist">Dermatologist</option>
+                        <option value="Psychiatrist">Psychiatrist</option>
+                        <option value="Radiologist">Radiologist</option>
+                        <option value="Neurologist">Neurologist</option>
+                        <option value="Anesthesiologist">Anesthesiologist</option>
+                        <option value="Surgeon">Surgeon</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputQualification">Experience (years)</label>
+                    <input type="text"  maxlength="2" class="form-control" name="experience" id="inputCnic" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputQualification">Consultation fee</label>
+                    <input placeholder="PKR" type="text"  maxlength="4" class="form-control" name="fee" id="" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputFileName">Upload your resume</label>
                     <input type="file" class="form-control" name="file" id="customFile" />
                 </div>
                 <div class="form-group">

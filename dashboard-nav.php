@@ -16,7 +16,6 @@ else if($role == "adm")
 }
 else if($role == "pat")
 {
-    
     header("Location: patient_dashboard.php");
 }
 

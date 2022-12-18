@@ -14,6 +14,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     $dob = $_POST['dob'];
     $gender = $_POST['gender'];
     $role = "pat";
+    $requestid = rand(1111111111,9999999999);
+
     
 
     $query = "Select * FROM users WHERE email = ('$email')";
@@ -24,8 +26,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     }
     else{
 
-    $query = "insert into users (username,email,cnic,password,phone,dob,city,gender,role)
-    value ('$username','$email','$cnic','$password','$phone','$dob','$city','$gender','$role')";
+    $query = "insert into users (username,email,cnic,password,phone,dob,city,gender,role,userid)
+    value ('$username','$email','$cnic','$password','$phone','$dob','$city','$gender','$role','$requestid')";
 
     mysqli_query($conn, $query);
 
@@ -69,7 +71,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 </div>
 
                 <div class="form-group">
-                    <label for="inputPhone">Phone Number</label>
+                    <label for="inputPhone">Phone number</label>
                     <input type="tel" class="form-control" maxlength="11" name="phone" id="inputPhone" placeholder="03*********"
                         onkeypress='return event.charCode>=48 && event.charCode<=57' pattern="[0-9]{11}" required>
                 </div>

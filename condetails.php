@@ -1,3 +1,9 @@
+<?php 
+
+$id = $_GET['id'];
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -11,22 +17,30 @@ require_once("postnav.php");
 
 $email = $_SESSION['email'];
 
-$query = "select * from users where email='$email'";
+$query = "select * from users where userid='$id'";
 $run = mysqli_query($conn,$query);
-
 while($row = mysqli_fetch_array($run)){
     $username = $row['username'];
-    $password = $row['password'];
+    $email = $row['email'];
     $dob = $row['dob'];
     $city = $row['city'];
     $cnic = $row['cnic'];
     $phone = $row['phone'];
     $gender = $row['gender'];
     $qualification = $row['qualification'];
+    $specialization = $row['specialization'];
+    $experience = $row['experience'];
+    $fee = $row['fee'];
     $file = $row['file'];
     $role = $row['role'];
 }
-$_SESSION['role'] = $role;
+
+if($_SERVER['REQUEST_METHOD']=="POST")
+{
+   $status = $_POST['status'];
+mysqli_query($conn,"UPDATE users set status='" . $_POST['status'] . "' WHERE email='" . $email . "'");
+header("Location: admin_dashboard.php");
+}
 
 ?>
 
@@ -40,7 +54,17 @@ $_SESSION['role'] = $role;
                     <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                         <div class="row align-items-center">
                             <div class="col-lg-4 mb-4 mb-lg-4">
-                                <img src="images/placeholder.jpg" height="300px" alt="...">
+                                <img src="images/placeholder.jpg" height="300px" alt="..."><br><br>
+                                <form action="" method="POST">
+                                    <label for="">Update status</label>
+                                <select id="" class="form-control" name="status" required>
+                                    <option selected value="wait">Wait</option>
+                                    <option value="reject">Reject</option>
+                                    <option value="accept">Accept</option>
+                                </select>
+                                <button type="submit" value="Submit" name="submit"
+                                    class="btn btn-primary">Confirm</button>
+                                    </form>
                             </div>
                             <div class="col-lg-6 px-xl-10">
                                 <ul class="list-unstyled mb-1-9">
@@ -65,19 +89,31 @@ $_SESSION['role'] = $role;
                                     <li class="mb-2 mb-xl-3 display-28"><span
                                             class="display-26 text-secondary me-2 font-weight-600">Phone:
                                         </span><?php echo $phone ?></li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Phone:
+                                        </span><?php echo $phone ?></li>
+                                        <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Qualification:
+                                        </span><?php echo $qualification ?></li>
+                                        <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Specialization:
+                                        </span><?php echo $specialization ?></li>
+                                        <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Experience:
+                                        </span><?php echo $experience ?> years</li>
+                                        <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Fee:
+                                        </span><?php echo $fee ?> pkr</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12 data">
-                        <a class="btn btn-primary" href="changepassword.php">Change password</a>
-                        <a class="btn btn-primary" href="editdetails.php">Edit details</a> <br>
+                    <div class="col-lg-4 data">
+
                     </div>
                 </div>
             </div>
         </div>
-
-
 
     </div>
     </div>

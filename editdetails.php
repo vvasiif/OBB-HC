@@ -31,10 +31,11 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     mysqli_query($conn,"UPDATE users set username='" . $username . "' WHERE email='" . $email . "'");
     mysqli_query($conn,"UPDATE users set phone='" . $phone . "' WHERE email='" . $email . "'");
     mysqli_query($conn,"UPDATE users set city='" . $city . "' WHERE email='" . $email . "'");
+    header('Location: profile.php');
   }
 
 
-header('profile.php');
+
 
 ?>
 
@@ -48,6 +49,8 @@ header('profile.php');
     <div class="bg">
         <div class="container">
             <h3>Edit Details</h3>
+            <div class="card card-style1 border-0">
+                    <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
             <form action="" method="POST">
                 <div class="form-group">
                     <label for="text">Name</label>
@@ -307,6 +310,8 @@ header('profile.php');
 
                 <button type="submit" value="Submit" name="submit" class="btn btn-primary">Update</button>
             </form>
+                    </div>
+            </div>
         </div>
     </div>
 </body>

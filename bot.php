@@ -1,13 +1,15 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-
-</head>
-
 <?php
-include_once 'connection.php';
-require_once("postnav.php");
+require_once 'connection.php';
+
+session_start();
+
+// echo "Welcome " . $_SESSION['email'];
+
+if($_SESSION['email']==NULL) { 
+  include_once('prenav.php');
+}else{
+  include_once('postnav.php');
+}
 
 $email = $_SESSION['email'];
 
@@ -30,8 +32,13 @@ $_SESSION['role'] = $role;
 
 ?>
 
-<body>
+<!doctype html>
+<html lang="en">
 
+<head>
+</head>
+
+<body>
     <div class="container">
         <h3>Your Details</h3><br>
         <div class="row">
@@ -69,18 +76,17 @@ $_SESSION['role'] = $role;
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12 data">
-                        <a class="btn btn-primary" href="changepassword.php">Change password</a>
-                        <a class="btn btn-primary" href="editdetails.php">Edit details</a> <br>
-                    </div>
                 </div>
             </div>
         </div>
-
-
-
+        <h3 style="text-align: left;">Explain your problem below</h3>
+        <div class="form-outline">
+            <textarea class="form-control" id="textAreaExample1" rows="4"></textarea>
+        </div>
+        <button class="btn btn-primary">Submit</button>
     </div>
     </div>
+
 </body>
 
 </html>
