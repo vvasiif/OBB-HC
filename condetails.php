@@ -63,7 +63,7 @@ header("Location: admin_dashboard.php");
                                     <option value="accept">Accept</option>
                                 </select>
                                 <button type="submit" value="Submit" name="submit"
-                                    class="btn btn-primary">Confirm</button>
+                                    class="btn btn-info">Confirm</button>
                                     </form>
                             </div>
                             <div class="col-lg-6 px-xl-10">
@@ -86,9 +86,6 @@ header("Location: admin_dashboard.php");
                                     <li class="mb-2 mb-xl-3 display-28"><span
                                             class="display-26 text-secondary me-2 font-weight-600">Gender:
                                         </span><?php echo $gender ?></li>
-                                    <li class="mb-2 mb-xl-3 display-28"><span
-                                            class="display-26 text-secondary me-2 font-weight-600">Phone:
-                                        </span><?php echo $phone ?></li>
                                     <li class="mb-2 mb-xl-3 display-28"><span
                                             class="display-26 text-secondary me-2 font-weight-600">Phone:
                                         </span><?php echo $phone ?></li>

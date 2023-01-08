@@ -59,8 +59,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 </head>
 
 <body>
-    <div class="bg">
-        <div class="container">
+        <div class="container smallcontainer">
             <form action="" method="POST">
                 <div class="form-group">
                     <h3>Sign In</h3>
@@ -72,12 +71,12 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                     <label for="inputPassword">Password</label>
                     <input type="password" class="form-control" id="inputPassword" name="password" required>
                 </div>
-                <button type="submit" value="Submit" name="submit" class="btn btn-primary">Sign in</button>
+                <button type="submit" value="Submit" name="submit" class="btn btn-info">Sign in</button>
             </form>
             <div class="msg">
                 <?php if(isset($message)) { echo $message; } ?>
             </div>
-        </div>
+       
     </div>
 </body>
 

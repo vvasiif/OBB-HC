@@ -70,8 +70,8 @@ $_SESSION['role'] = $role;
                         </div>
                     </div>
                     <div class="col-lg-12 data">
-                        <a class="btn btn-primary" href="changepassword.php">Change password</a>
-                        <a class="btn btn-primary" href="editdetails.php">Edit details</a> <br>
+                        <a class="btn btn-info" href="changepassword.php">Change password</a>
+                        <a class="btn btn-info" href="editdetails.php">Edit details</a> <br>
                     </div>
                 </div>
             </div>

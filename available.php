@@ -37,9 +37,9 @@ header("Location: bbportal.php");
                     <form action="" method="POST">
                         <h4 style="color: black; text-align:center">You're listed as a donor!</h4><em>
                         <div class="center-box">
-                            <button type="" value="no" name="availablity" class="btn btn-primary">Remove your listing as a
+                            <button type="" value="no" name="availablity" class="btn btn-info">Remove your listing as a
                                 donor!</button>
-                            <a class="btn btn-primary" href="dashboard-nav.php">Back to dashboard</a>
+                            <a class="btn btn-info" href="dashboard-nav.php">Back to dashboard</a>
                         </div>
 
                         <div class="msg">

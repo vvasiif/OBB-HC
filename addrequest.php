@@ -87,7 +87,7 @@ if (isset($_GET['deleterequest'])) {
                         <label for="inputPassword">Area</label>
                         <input type="text" class="form-control" id="text" name="area" required>
                     </div>
-                    <button type="submit" value="Submit" name="postrequest" class="btn btn-primary">Post
+                    <button type="submit" value="Submit" name="postrequest" class="btn btn-info">Post
                         request</button>
                 </form>
                 <div class="msg">

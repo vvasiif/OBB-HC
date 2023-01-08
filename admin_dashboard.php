@@ -1,5 +1,6 @@
 <?php
 require_once("postnav.php");
+include_once 'functions.php';
 // echo "Welcome " . $_SESSION['email'];
 
 $brl = 0;
@@ -66,26 +67,23 @@ while($row = mysqli_fetch_array($run)){
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
-            <a href="list.php?id=1"><button type="button" class="btn-large">Blood Request (<?php echo $brl ?>)</button></a>
+            <div class="col-lg-12">
+            <a href="bblist.php"><button type="button" class="btn-large">Blood Bank Lists (Requests: <?php echo $brl ?> Donors: <?php echo $bdl ?>)</button></a>
             </div>
-            <div class="col-lg-4 list-btn">
-            <a href="list.php?id=2"><button type="button" class="btn-large">Blood Donors (<?php echo $bdl ?>)</button></a>
+            <div class="col-lg-6 list-btn">
+            <a href="newcon.php"><button type="button" class="btn-large">Consultants/Doctors Waitlist (<?php echo $newcon ?>)</button></a>
             </div>
-            <div class="col-lg-4 list-btn">
-            <a href="newcon.php?id=3"><button type="button" class="btn-large">Consultants/Doctors Waitlist (<?php echo $newcon ?>)</button></a>
+            <div class="col-lg-6 list-btn">
+            <a href="allcon.php"><button type="button" class="btn-large">Consultant/Doctors (<?php echo $patlist ?>)</button></a>
             </div>
-            <div class="col-lg-4 list-btn">
-            <a href="allcon.php?id=4"><button type="button" class="btn-large">Consultant/Doctors (<?php echo $patlist ?>)</button></a>
+            <div class="col-lg-6 list-btn">
+            <a href="list.php"><button type="button" class="btn-large">Other Users (<?php echo $conlist ?>)</button></a>
             </div>
-            <div class="col-lg-4 list-btn">
-            <a href="list.php?id=5"><button type="button" class="btn-large">Other Users (<?php echo $conlist ?>)</button></a>
-            </div>
-            <div class="col-lg-4 list-btn">
-            <a href="list.php?id=6"><button type="button" class="btn-large">Appointments (<?php echo $conlist ?>)</button></a>
+            <div class="col-lg-6 list-btn">
+            <a href="list.php"><button type="button" class="btn-large">Appointments (<?php echo $conlist ?>)</button></a>
             </div>
             <div class="col-lg-12 list-btn">
-            <a href="list.php?id=7"><button type="button" class="btn-large">Total Users (<?php echo $allusers ?>)</button></a>
+            <a href="list.php"><button type="button" class="btn-large">Total Users (<?php echo $allusers ?>)</button></a>
             </div>
         </div>
 

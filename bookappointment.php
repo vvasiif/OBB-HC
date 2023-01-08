@@ -15,6 +15,8 @@ while($row = mysqli_fetch_array($run)){
     $conphone = $row['phone'];
     $fee = $row['fee'];
     $status = "new";
+    $appointmentid = rand(1111111111,9999999999);
+
 }
 
 // $query = "select * from users where email = $patemail";
@@ -31,8 +33,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     $patemail = $_SESSION['email'];
 
 
-    $query = "insert into appointments (pat_email,con_email,details,meet_time,meet_date,status) 
-    value ('$patemail','$conemail','$details','$meet_time','$meet_date','$status')";
+    $query = "insert into appointments (pat_email,con_email,details,meet_time,meet_date,status,appointmentid) 
+    value ('$patemail','$conemail','$details','$meet_time','$meet_date','$status','$appointmentid')";
     mysqli_query($conn, $query);
 
     header("Location: payment.php");
@@ -46,7 +48,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
 <head>
 <script type="text/javascript">
-    window.onload=function(){//from ww  w . j  a  va2s. c  o  m
+    window.onload=function(){
 var today = new Date().toISOString().split('T')[0];
 document.getElementsByName("meetdate")[0].setAttribute('min', today);
     }
@@ -97,6 +99,10 @@ document.getElementsByName("meetdate")[0].setAttribute('min', today);
                                                 <li class="mb-2 mb-xl-3 display-28"><span
                                                     class="display-26 text-secondary me-2 font-weight-600">Fee:
                                                 </span><?php echo $fee; ?> PKR</li>
+
+                                                <li class="mb-2 mb-xl-3 display-28"><span
+                                                    class="display-26 text-secondary me-2 font-weight-600">Rating:
+                                                </span></li>
                                         </ul>
                                     </div>
                                     <div class="col-lg-4 px-xl-10">
@@ -119,7 +125,7 @@ document.getElementsByName("meetdate")[0].setAttribute('min', today);
 
                                             <li class="mb-2 mb-xl-3 display-28">
                                                 <button type="submit" value="Submit" name="submit"
-                                                    class="btn btn-primary">Book</button>
+                                                    class="btn btn-info">Book</button>
                                             </li>
 
                                         </ul>

@@ -24,7 +24,7 @@ while($row = mysqli_fetch_array($run)){
 
 <head>
 
-    <title>OBB&HC</title>
+    <title>Online Blood Bank & Health Consultant</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -55,7 +55,9 @@ while($row = mysqli_fetch_array($run)){
 <body>
     <nav>
         <div id="hide_index" class="logo">
-            <a href="index.php">OBB&HC</a>
+            <!-- <a href="index.php">OBB&HC</a> -->
+            <a href="index.php"><img height="50px" src="images/logo.png" alt=""></a>
+
         </div>
         <input type="checkbox" id="click">
         <label for="click" class="menu-btn">

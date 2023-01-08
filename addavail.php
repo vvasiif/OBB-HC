@@ -38,7 +38,7 @@ if($email == NULL) {
   if($_SERVER['REQUEST_METHOD']=="POST")
   {
 
-    $bloodgroup = $_POST['bloodgroup'];
+    $bloodgroup = $_POST['bloodtype'];
     $area = $_POST['area'];
     $available = "yes";
 
@@ -88,7 +88,7 @@ header("Location: available.php");
                         <label for="">Area</label>
                         <input type="text" class="form-control" id="text" name="area" required>
                     </div>
-                    <button type="submit" value="Submit" name="submit" class="btn btn-primary">Post
+                    <button type="submit" value="Submit" name="submit" class="btn btn-info">Post
                         availability</button>
                 </form>
                 <div class="msg">

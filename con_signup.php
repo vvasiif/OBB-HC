@@ -4,6 +4,14 @@ include_once 'prenav.php';
 
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
+    $file=$_FILES['file']['name'];
+    $file_type=$_FILES['filf']['type'];
+    $file_size=$_FILES['file']['size'];
+    $file_tem_loc=$_FILES['file']['tmp_name'];
+    $file_store="file/".$file;
+
+    move_uploaded_file($file_tem_loc,$file_store);
+
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -21,7 +29,6 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     $requestid = rand(1111111111,9999999999);
     $fee = $_POST['fee'];
 
-
     $query = "Select * FROM users WHERE email = ('$email')";
     $run = mysqli_query($conn,$query);
     $data = mysqli_fetch_array($run);
@@ -30,8 +37,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     }
     else{
   
-    $query = "insert into users (username,email,password,cnic,phone,dob,city,gender,role,qualification,specialization,experience,file,status,userid) 
-    value ('$username','$email','$password','$cnic','$phone','$dob','$city','$gender','$role','$qualification','$specialization','$experience','$file','$status','$requestid')";
+    $query = "insert into users (username,email,password,cnic,phone,dob,city,gender,role,qualification,specialization,experience,file,status,userid,fee) 
+    value ('$username','$email','$password','$cnic','$phone','$dob','$city','$gender','$role','$qualification','$specialization','$experience','$file','$status','$requestid','$fee')";
 
     mysqli_query($conn, $query);
 
@@ -46,12 +53,11 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
 <head>
 
-
 </head>
 
 <body>
     <div class="bg">
-        <div class="container">
+        <div class="container smallcontainer">
             <form action="" method="POST">
 
                 <div class="form-group">
@@ -395,7 +401,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 </div>
                 <div class="form-group">
                 </div>
-                <button type="submit" value="Submit" name="submit" class="btn btn-primary">Sign up</button>
+                <button type="submit" value="Submit" name="submit" class="btn btn-info">Sign up</button>
             </form>
 
             <div class="msg">

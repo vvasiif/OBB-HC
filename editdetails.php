@@ -308,7 +308,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                     </select>
 </div>
 
-                <button type="submit" value="Submit" name="submit" class="btn btn-primary">Update</button>
+                <button type="submit" value="Submit" name="submit" class="btn btn-info">Update</button>
             </form>
                     </div>
             </div>

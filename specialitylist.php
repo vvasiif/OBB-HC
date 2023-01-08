@@ -35,7 +35,9 @@ $specialization = $_GET['specialization'];
                         <p class="con-spec"><?php echo $row['specialization'] ?></p>
                         <p class="con-spec"><?php echo "Experience: " . $row['experience'] . " years" ?></p>
                         <p class="con-spec"><?php echo "Fee: " . $row['fee'] . " PKR" ?></p>
-                        <a class="btn btn-primary" href="bookappointment.php?id=<?php echo $row['userid']; ?>">Book appointment</a>                        
+                        <p class="con-spec"><?php echo "Rating: "?></p>
+
+                        <a class="btn btn-info" href="bookappointment.php?id=<?php echo $row['userid']; ?>">Book appointment</a>                        
                     </div>
                 </div>
             </div>

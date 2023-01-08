@@ -15,7 +15,7 @@ require_once("postnav.php");
         <div class="col-lg-12">
         <h3>Payment Gateway</h3>    
             <div class="col-lg-12 list-btn">
-            <a href="myappointments.php"><button type="button" class="btn btn-primary">Confirm</button></a>
+            <a href="myappointments.php"><button type="button" class="btn btn-info">Confirm</button></a>
             </div>
         </div>
     </div>

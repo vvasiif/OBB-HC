@@ -2,6 +2,13 @@
 require_once 'connection.php';
 session_start();
 
+if($_SESSION['log'] == "yes") { 
+    include_once 'postnav.php';
+  }
+  else {
+    header("Location: signin.php");
+  }
+
 // echo "Welcome " . $_SESSION['email'];
 
 if($_SESSION['email']==NULL) { 

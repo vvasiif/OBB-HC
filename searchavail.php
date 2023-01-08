@@ -272,7 +272,7 @@ $email = $_SESSION['email'];
                             <option value="Zhob">Zhob</option>
                             <option value="Ziarat">Ziarat</option>
                         </select>
-                        <button type="submit" value="Submit" name="submit" class="btn btn-primary">Search</button>
+                        <button type="submit" value="Submit" name="submit" class="btn btn-info">Search</button>
                     </div>
 
                 </form>
@@ -325,7 +325,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
         <div class="msg">
             <?php if(isset($message)) { echo $message; } ?> 
-            <a class="btn btn-light" href="addrequest.php">Post a blood request on portal</a> <br>
+            <a class="btn btn-info" href="addrequest.php">Post a blood request on portal</a> <br>
         </div>
 
     </div>

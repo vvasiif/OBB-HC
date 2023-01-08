@@ -35,7 +35,7 @@ require_once 'postnav.php';
                             <td><?php echo $row['username']; ?></td>
                             <td><?php echo $row['phone']; ?></td>
                             <td><?php echo $row['city']; ?></td>
-                            <td><a class="btn btn-primary" href="condetails.php?id=<?php echo $row['userid']; ?>">View</a></td>
+                            <td><a class="btn btn-info" href="condetails.php?id=<?php echo $row['userid']; ?>">View</a></td>
                         </tr>
                         <?php  } 
             ?>

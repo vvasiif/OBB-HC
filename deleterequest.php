@@ -5,16 +5,16 @@ include_once('postnav.php');
 
 $email = $_SESSION['email'];
 
-$query = "select * from bloodrequestlist";
-$run = mysqli_query($conn,$query);
-while($row = mysqli_fetch_array($run)){
-$requestdays = daysAgo($row['dateadded']);
-if($requestdays>3)
-{
-    mysqli_query($conn,"DELETE FROM bloodrequestlist WHERE email='" . $row['email'] . "'");
+// $query = "select * from bloodrequestlist";
+// $run = mysqli_query($conn,$query);
+// while($row = mysqli_fetch_array($run)){
+// $requestdays = daysAgo($row['dateadded']);
+// if($requestdays>3)
+// {
+//     mysqli_query($conn,"DELETE FROM bloodrequestlist WHERE email='" . $row['email'] . "'");
 
-}
-}
+// }
+// }
 
 
 // echo "Welcome " . $_SESSION['email'];
@@ -74,16 +74,16 @@ header("Location: addrequest.php");
                                     <td>
                                         <form action="" method="post">
                                             <button type="submit" value="Submit" name="deleterequest"
-                                                class="btn btn-primary">Delete request</button>
+                                                class="btn btn-info">Delete request</button>
                                         </form>
                                     </td>
                                 </tr>
                                 <?php  } ?>
                             </tbody>
-                        </table>
+                        </table><br>
                         <h2 class="msg">Every request gets automatically<br>deleted after three days of posting!</h2>
                         <div class="center-box">
-                            <a class="btn btn-primary" href="dashboard-nav.php">Back to dashboard</a>
+                            <a class="btn btn-info" href="dashboard-nav.php">Back to dashboard</a>
                         </div>
 
                         <div class="msg">

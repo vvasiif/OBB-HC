@@ -63,7 +63,7 @@ header('profile.php');
                     <label for="inputPassword">Confirm new password</label>
                     <input type="password" class="form-control" id="password" name="confirmpassword" required>
                 </div>
-                <button type="submit" value="Submit" name="submit" class="btn btn-primary">Update password</button>
+                <button type="submit" value="Submit" name="submit" class="btn btn-info">Update password</button>
             </form>
             <div class="msg">
                 <?php if(isset($message)) { echo $message; } ?>
