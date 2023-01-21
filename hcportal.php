@@ -9,142 +9,153 @@ if($_SESSION['log'] == "yes") {
     header("Location: signin.php");
   }
 
-// echo "Welcome " . $_SESSION['email'];
 
 if($_SESSION['email']==NULL) { 
   include_once('prenav.php');
 }else{
   include_once('postnav.php');
 }
+
+$dermatologist = 0;
+$query = "select * from users where role = 'con' && specialization = 'Dermatologist' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+$dermatologist = $dermatologist + 1;
+}
+
+$immunologist = 0;
+$query = "select * from users where role = 'con' && specialization = 'Immunologist' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+$immunologist = $immunologist + 1;
+}
+
+$gastroenterologist = 0;
+$query = "select * from users where role = 'con' && specialization = 'Gastroenterologist' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+$gastroenterologist = $gastroenterologist + 1;
+}
+
+$hivspecialist = 0;
+$query = "select * from users where role = 'con' && specialization = 'HIV specialist' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+$hivspecialist = $hivspecialist + 1;
+}
+
+$endocrinologist = 0;
+$query = "select * from users where role = 'con' && specialization = 'Endocrinologist' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+$endocrinologist = $endocrinologist + 1;
+}
+
+$primarycarephysician = 0;
+$query = "select * from users where role = 'con' && specialization = 'Primary care physician' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+$primarycarephysician = $primarycarephysician + 1;
+}
+
+$pulmonologist = 0;
+$query = "select * from users where role = 'con' && specialization = 'Pulmonologist' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+$pulmonologist = $pulmonologist + 1;
+}
+
+$cardiologist = 0;
+$query = "select * from users where role = 'con' && specialization = 'Cardiologist' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+$cardiologist = $cardiologist + 1;
+}
+
+$neurologist = 0;
+$query = "select * from users where role = 'con' && specialization = 'Neurologist' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+$neurologist = $neurologist + 1;
+}
+
+$orthopedicorneurosurgeon = 0;
+$query = "select * from users where role = 'con' && specialization = 'Orthopedic or neurosurgeon' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+$orthopedicorneurosurgeon = $orthopedicorneurosurgeon + 1;
+}
+
+$neurosurgeon = 0;
+$query = "select * from users where role = 'con' && specialization = 'Neurosurgeon' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+$neurosurgeon = $neurosurgeon + 1;
+}
+
+$infectiousdiseasespecialist = 0;
+$query = "select * from users where role = 'con' && specialization = 'Infectious Disease Specialist' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+    $infectiousdiseasespecialist = $infectiousdiseasespecialist + 1;
+}
+
 $familymedicine = 0;
- $query = "select * from users where role = 'con' && specialization = 'Family Medicine' ";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    $familymedicine = $familymedicine + 1;
-                }
-                    
-$internalmedicine = 0;
- $query = "select * from users where role = 'con' && specialization = 'Internal Medicine' ";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    $internalmedicine = $internalmedicine + 1;
-                }
+$query = "select * from users where role = 'con' && specialization = 'Family Medicine' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+    $familymedicine = $familymedicine + 1;
+}
 
-                $Pediatrician = 0;
- $query = "select * from users where role = 'con' && specialization = 'Pediatrician' ";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    $Pediatrician = $Pediatrician + 1;
-                }
+$proctologist = 0;
+$query = "select * from users where role = 'con' && specialization = 'Proctologist' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+    $proctologist = $proctologist + 1;
+}
 
-                $Obstetricians = 0;
- $query = "select * from users where role = 'con' && specialization = 'Obstetricians/gynecologist' ";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    $Obstetricians = $Obstetricians + 1;
-                }
+$cardiologist = 0;
+$query = "select * from users where role = 'con' && specialization = 'Cardiologist' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+    $cardiologist = $cardiologist + 1;
+}
 
-                $Cardiologist = 0;
- $query = "select * from users where role = 'con' && specialization = 'Cardiologist' ";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    $Cardiologist = $Cardiologist + 1;
-                }
-                $Oncologist = 0;
-                $query = "select * from users where role = 'con' && specialization = 'Oncologist' ";
-                               $run = mysqli_query($conn,$query);
-                               while($row = mysqli_fetch_array($run)){
-                                   $Oncologist = $Oncologist + 1;
-                               }
-                                   
-               $Gastroenterologist = 0;
-                $query = "select * from users where role = 'con' && specialization = 'Gastroenterologist' ";
-                               $run = mysqli_query($conn,$query);
-                               while($row = mysqli_fetch_array($run)){
-                                   $Gastroenterologist = $Gastroenterologist + 1;
-                               }
-               
-                               $Pulmonologist = 0;
-                $query = "select * from users where role = 'con' && specialization = 'Pulmonologist' ";
-                               $run = mysqli_query($conn,$query);
-                               while($row = mysqli_fetch_array($run)){
-                                   $Pulmonologist = $Pulmonologist + 1;
-                               }
-               
-                               $Infectiousdisease = 0;
-                $query = "select * from users where role = 'con' && specialization = 'Infectious disease' ";
-                               $run = mysqli_query($conn,$query);
-                               while($row = mysqli_fetch_array($run)){
-                                   $Infectiousdisease = $Infectiousdisease + 1;
-                               }
-               
-                               $Nephrologist = 0;
-                $query = "select * from users where role = 'con' && specialization = 'Nephrologist' ";
-                               $run = mysqli_query($conn,$query);
-                               while($row = mysqli_fetch_array($run)){
-                                   $Nephrologist = $Nephrologist + 1;
-                               }
-                               $Endocrinologist = 0;
- $query = "select * from users where role = 'con' && specialization = 'Endocrinologist' ";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    $Endocrinologist = $Endocrinologist + 1;
-                }
-                    
-$Ophthalmologist = 0;
- $query = "select * from users where role = 'con' && specialization = 'Ophthalmologist' ";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    $Ophthalmologist = $Ophthalmologist + 1;
-                }
+$phlebologist = 0;
+$query = "select * from users where role = 'con' && specialization = 'Phlebologist' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+    $phlebologist = $phlebologist + 1;
+}
 
-                $Otolaryngologist = 0;
- $query = "select * from users where role = 'con' && specialization = 'Otolaryngologist' ";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    $Otolaryngologist = $Otolaryngologist + 1;
-                }
+$orthopedicsurgeon = 0;
+$query = "select * from users where role = 'con' && specialization = 'Orthopedic Surgeon' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+    $orthopedicsurgeon = $orthopedicsurgeon + 1;
+}
 
-                $Dermatologist = 0;
- $query = "select * from users where role = 'con' && specialization = 'Dermatologist' ";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    $Dermatologist = $Dermatologist + 1;
-                }
+$rheumatologist = 0;
+$query = "select * from users where role = 'con' && specialization = 'Rheumatologist' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+    $rheumatologist = $rheumatologist + 1;
+}
 
-                $Psychiatrist = 0;
- $query = "select * from users where role = 'con' && specialization = 'Psychiatrist' ";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    $Psychiatrist = $Psychiatrist + 1;
-                }
-                $Radiologist = 0;
- $query = "select * from users where role = 'con' && specialization = 'Radiologist' ";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    $Radiologist = $Radiologist + 1;
-                }
-                    
-$Neurologist = 0;
- $query = "select * from users where role = 'con' && specialization = 'Neurologist' ";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    $Neurologist = $Neurologist + 1;
-                }
+$ent = 0;
+$query = "select * from users where role = 'con' && specialization = 'ENT' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+    $ent = $ent + 1;
+}
 
-                $Anesthesiologist = 0;
- $query = "select * from users where role = 'con' && specialization = 'Anesthesiologist' ";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    $Anesthesiologist = $Anesthesiologist + 1;
-                }
+$urologist = 0;
+$query = "select * from users where role = 'con' && specialization = 'Urologist' ";
+$run = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($run)){
+    $urologist = $urologist + 1;
+}
 
-                $Surgeon = 0;
- $query = "select * from users where role = 'con' && specialization = 'Surgeon' ";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    $Surgeon = $Surgeon + 1;
-                }
 
 ?>
 
@@ -169,70 +180,70 @@ $Neurologist = 0;
                             placeholder="Find a doctor/consultant by speciality">
                         <div style="height: 300px; overflow:scroll">
                             <ul id="myUL">
+
+                                <li><a href="specialitylist.php?specialization=Dermatologist"><button type="button"
+                                            class="btn-large">Dermatologist
+                                            <?php echo "(". $dermatologist ." available)" ?></button></a></li>
+                                <li><a href="specialitylist.php?specialization=Immunologist"><button type="button"
+                                            class="btn-large">Immunologist
+                                            <?php echo "(". $immunologist ." available)" ?></button></a></li>
+                                <li><a href="specialitylist.php?specialization=Gastroenterologist"><button type="button"
+                                            class="btn-large">Gastroenterologist
+                                            <?php echo "(". $gastroenterologist ." available)" ?></button></a></li>
+                                <li><a href="specialitylist.php?specialization=HIV specialist"><button type="button"
+                                            class="btn-large">HIV Specialist
+                                            <?php echo "(". $hivspecialist ." available)" ?></button></a></li>
+                                <li><a href="specialitylist.php?specialization=Endocrinologist"><button type="button"
+                                            class="btn-large">Endocrinologist
+                                            <?php echo "(". $endocrinologist ." available)" ?></button></a></li>
+                                <li><a href="specialitylist.php?specialization=Primary care physician"><button
+                                            type="button" class="btn-large">Primary Care Physician
+                                            <?php echo "(". $primarycarephysician ." available)" ?></button></a></li>
+                                <li><a href="specialitylist.php?specialization=Pulmonologist"><button type="button"
+                                            class="btn-large">Pulmonologist
+                                            <?php echo "(". $pulmonologist ." available)" ?></button></a></li>
+                                <li><a href="specialitylist.php?specialization=Cardiologist"><button type="button"
+                                            class="btn-large">Cardiologist
+                                            <?php echo "(". $cardiologist ." available)" ?></button></a></li>
+                                <li><a href="specialitylist.php?specialization=Neurologist"><button type="button"
+                                            class="btn-large">Neurologist
+                                            <?php echo "(". $neurologist ." available)" ?></button></a></li>
+                                <li><a href="specialitylist.php?specialization=Orthopedic or neurosurgeon"><button
+                                            type="button" class="btn-large">Orthopedic or Neurosurgeon
+                                            <?php echo "(". $orthopedicorneurosurgeon ." available)" ?></button></a>
+                                </li>
+                                <li><a href="specialitylist.php?specialization=Neurosurgeon"><button type="button"
+                                            class="btn-large">Neurosurgeon
+                                            <?php echo "(". $neurosurgeon ." available)" ?></button></a></li>
+
+                                <li><a href="specialitylist.php?specialization=Infectious Disease Specialist"><button
+                                            type="button" class="btn-large">Infectious Disease Specialist
+                                            <?php echo "(". $infectiousdiseasespecialist ." available)" ?></button></a>
+                                </li>
                                 <li><a href="specialitylist.php?specialization=Family Medicine"><button type="button"
                                             class="btn-large">Family Medicine
                                             <?php echo "(". $familymedicine ." available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Internal Medicine"><button type="button"
-                                            class="btn-large">Internal Medicine
-                                            <?php echo "(". $internalmedicine ." available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Pediatrician"><button type="button"
-                                            class="btn-large">Pediatrician
-                                            <?php echo "(". $Pediatrician ." available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Obstetricians/gynecologist"><button
-                                            type="button" class="btn-large">Obstetricians/gynecologist
-                                            <?php echo "(". $Obstetricians ." available)" ?></button></a></li>
+                                <li><a href="specialitylist.php?specialization=Proctologist"><button type="button"
+                                            class="btn-large">Proctologist
+                                            <?php echo "(". $proctologist ." available)" ?></button></a></li>
                                 <li><a href="specialitylist.php?specialization=Cardiologist"><button type="button"
                                             class="btn-large">Cardiologist
-                                            <?php echo "(". $Cardiologist ." available)" ?></button></a></li>
-
-                                <li><a href="specialitylist.php?specialization=Oncologist"><button type="button"
-                                            class="btn-large">Oncologist
-                                            <?php echo "(". $Oncologist ." available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Gastroenterologist"><button type="button"
-                                            class="btn-large">Gastroenterologist
-                                            <?php echo "(". $Gastroenterologist ." available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Pulmonologist"><button type="button"
-                                            class="btn-large">Pulmonologist
-                                            <?php echo "(". $Pulmonologist ." available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Infectious disease"><button type="button"
-                                            class="btn-large">Infectious disease
-                                            <?php echo "(". $Infectiousdisease ." available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Nephrologist"><button type="button"
-                                            class="btn-large">Nephrologist
-                                            <?php echo "(". $Nephrologist ." available)" ?></button></a></li>
-
-                                <li><a href="specialitylist.php?specialization=Endocrinologist"><button type="button"
-                                            class="btn-large">Endocrinologist
-                                            <?php echo "(". $Endocrinologist ." available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Ophthalmologist"><button type="button"
-                                            class="btn-large">Ophthalmologist
-                                            <?php echo "(". $Ophthalmologist ." available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Otolaryngologist"><button type="button"
-                                            class="btn-large">Otolaryngologist
-                                            <?php echo "(". $Otolaryngologist ." available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Dermatologist"><button type="button"
-                                            class="btn-large">Dermatologist
-                                            <?php echo "(". $Dermatologist ." available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Psychiatrist"><button type="button"
-                                            class="btn-large">Psychiatrist
-                                            <?php echo "(". $Psychiatrist ." available)" ?></button></a></li>
-
-                                <li><a href="specialitylist.php?specialization=Radiologist"><button type="button"
-                                            class="btn-large">Radiologist
-                                            <?php echo "(". $Radiologist ." available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Nephrologist"><button type="button"
-                                            class="btn-large">Nephrologist
-                                            <?php echo "(". $Nephrologist ." available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Neurologist"><button type="button"
-                                            class="btn-large">Neurologist
-                                            <?php echo "(". $Neurologist ." available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Anesthesiologist"><button type="button"
-                                            class="btn-large">Anesthesiologist
-                                            <?php echo "(". $Anesthesiologist ." available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Surgeon"><button type="button"
-                                            class="btn-large">Surgeon
-                                            <?php echo "(". $Surgeon ." available)" ?></button></a>
+                                            <?php echo "(". $cardiologist ." available)" ?></button></a></li>
+                                <li><a href="specialitylist.php?specialization=Phlebologist"><button type="button"
+                                            class="btn-large">Phlebologist
+                                            <?php echo "(". $phlebologist ." available)" ?></button></a></li>
+                                <li><a href="specialitylist.php?specialization=Orthopedic Surgeon"><button type="button"
+                                            class="btn-large">Orthopedic Surgeon
+                                            <?php echo "(". $orthopedicsurgeon ." available)" ?></button></a></li>
+                                <li><a href="specialitylist.php?specialization=Rheumatologist"><button type="button"
+                                            class="btn-large">Rheumatologist
+                                            <?php echo "(". $rheumatologist ." available)" ?></button></a></li>
+                                <li><a href="specialitylist.php?specialization=ENT"><button type="button"
+                                            class="btn-large">ENT <?php echo "(". $ent ." available)" ?></button></a>
                                 </li>
+                                <li><a href="specialitylist.php?specialization=Urologist"><button type="button"
+                                            class="btn-large">Urologist
+                                            <?php echo "(". $urologist ." available)" ?></button></a></li>
                             </ul>
                         </div>
                         <!-- https://www.verywellhealth.com/types-of-doctors-1736311 -->

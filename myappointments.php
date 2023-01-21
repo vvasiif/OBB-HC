@@ -5,6 +5,8 @@ include_once('postnav.php');
 
 $email = $_SESSION['email'];
 
+$message = $_GET['msg'];
+
 $query = "select * from appointments where pat_email = '$email' && status = 'new'";
 $run = mysqli_query($conn,$query);
 while($row1 = mysqli_fetch_array($run)){
@@ -24,12 +26,13 @@ while($row1 = mysqli_fetch_array($run)){
                 <table class="table col-lg-12">
                     <tr>
                         <th scope="col">Consultant</th>
-                        <th scope="col">Specialization</th>
                         <th scope="col">Phone</th>
                         <th scope="col">E-mail</th>
                         <th scope="col">Appointment date</th>
                         <th scope="col">Your preffered appointment time</th>
                         <th scope="col">Confirmed Appointment time</th>
+                        <th scope="col">Status</th>
+
                     </tr>
                     <tbody>
                         <?php
@@ -44,12 +47,12 @@ while($row1 = mysqli_fetch_array($run)){
                     ?>
                         <tr scope="row">
                             <td><?php echo $row2['username']; ?></td>
-                            <td><?php echo $row2['specialization']; ?></td>
                             <td><?php echo $row2['phone']; ?></td>
                             <td><?php echo $row2['email']; ?></td>
                             <td><?php echo $row1['meet_date']; ?></td>
                             <td><?php echo $row1['meet_time']; ?></td>
                             <td><?php echo $row1['new_meet_time']; ?></td>
+                            <td><?php echo $row1['status']; ?></td>
                             <td><a style="margin-top: -5px;" class="btn btn-info"  target="_blank" href="https://meet.jit.si/<?php echo $row1['appointmentid'] ?>">Start</a></td>
                         </tr>
                         <?php  } }?>
@@ -66,10 +69,10 @@ while($row1 = mysqli_fetch_array($run)){
                     <tr>
                         <th scope="col">Consultant</th>
                         <th scope="col">Specialization</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">E-mail</th>
                         <th scope="col">Appointment date</th>
                         <th scope="col">Appointment time</th>
+                        <th scope="col">Status</th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -86,10 +89,10 @@ while($row1 = mysqli_fetch_array($run)){
                         <tr scope="row">
                             <td><?php echo $row2['username']; ?></td>
                             <td><?php echo $row2['specialization']; ?></td>
-                            <td><?php echo $row2['phone']; ?></td>
-                            <td><?php echo $row2['email']; ?></td>
                             <td><?php echo $row1['meet_date']; ?></td>
                             <td><?php echo $row1['meet_time']; ?></td>
+                            <td><?php echo $row1['status']; ?></td>
+
                             <td><a class="btn btn-info"href="rateappointment.php?id=<?php echo $row1['appointmentid'] ?>">Rate</a></td>
                         </tr>
                         <?php  } }?>

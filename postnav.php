@@ -9,12 +9,6 @@ $run = mysqli_query($conn,$query);
 
 while($row = mysqli_fetch_array($run)){
     $username = $row['username'];
-   //  $password = $row['password'];
-   //  $city = $row['city'];
-   //  $phone = $row['phone'];
-   //  $gender = $row['gender'];
-   //  $qualification = $row['qualification'];
-   //  $file = $row['file'];
 }
 
 ?>
@@ -55,9 +49,7 @@ while($row = mysqli_fetch_array($run)){
 <body>
     <nav>
         <div id="hide_index" class="logo">
-            <!-- <a href="index.php">OBB&HC</a> -->
             <a href="index.php"><img height="50px" src="images/logo.png" alt=""></a>
-
         </div>
         <input type="checkbox" id="click">
         <label for="click" class="menu-btn">

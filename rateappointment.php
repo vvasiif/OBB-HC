@@ -6,15 +6,12 @@ require_once("postnav.php");
 
 $id = $_GET['id'];
 
-$a=500;
-$b=600;
-$sum = $a + $b;
-echo $avg = $sum/5;
 
 $query = "select * from appointments where appointmentid = '$id'";
 $run = mysqli_query($conn,$query);
 while($row = mysqli_fetch_array($run)){
     $con_email = $row['con_email'];
+    $pat_email = $row['pat_email'];
     $time = $row['meet_time'];
     $newtime = $row['new_meet_time'];
     $date = $row['meet_date'];
@@ -39,25 +36,42 @@ while($row = mysqli_fetch_array($run)){
     $role = $row['role'];
 }
 
-// if($_SERVER['REQUEST_METHOD']=="POST")
-// {
-//    $rating = $_POST['rating'];
-//    $remarks = $_POST['remarks'];
+if($_SERVER['REQUEST_METHOD']=="POST")
+{
 
-// mysqli_query($conn,"UPDATE appointments set new_meet_time='" . $_POST['meettime'] . "' WHERE appointmentid='" .  $id . "'");
-// mysqli_query($conn,"UPDATE appointments set status = 'booked' WHERE appointmentid='" .  $id . "'");
+$rating = $_POST['rating'];
+$remarks = $_POST['remarks'];
 
-// header("Location: consultant_dashboard.php");
-// }
+mysqli_query($conn,"UPDATE appointments set rating = '" . $rating . "' WHERE appointmentid = '" . $id . "'");
+mysqli_query($conn,"UPDATE appointments set remarks = '" . $remarks . "' WHERE appointmentid = '" . $id . "'");
+
+
+$query = "select * from appointments where con_email = '$con_email' && status = 'completed'";
+$run = mysqli_query($conn,$query);
+$ratingsum = 0;
+$totalrating = 0;
+while($row = mysqli_fetch_array($run)){
+$ratingsum = $ratingsum + $row['rating'];
+$totalrating++;
+}
+
+$avgrating = round($ratingsum/$totalrating, 1);
+
+mysqli_query($conn,"UPDATE users set avgrating = '" . $avgrating . "' WHERE email = '" . $con_email . "'");
+
+
+
+header("Location: myappointments.php");
+
+
+}
+
 
 ?>
 
 <!doctype html>
 <html lang="en">
 
-<head>
-
-</head>
 
 <body>
 

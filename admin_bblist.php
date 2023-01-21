@@ -24,18 +24,15 @@ while($row = mysqli_fetch_array($run)){
     <div class="container">
         <h3>Blood Bank Portal</h3>
         <div class="row">
-
-    
             <div class="card card-style1 border-0">
                 <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
-                    <table class="table-list col-lg-6">
-                    <h3 style="color: black;">Request list</h3>
+                    <table class="table col-lg-6">
+                        <h3 style="color: black;">Request list</h3>
                         <tr>
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Blood Group</th>
                             <th>City</th>
-                            <th>Area</th>
                             <th>Requested</th>
                         </tr>
                         <tbody>
@@ -49,8 +46,7 @@ while($row = mysqli_fetch_array($run)){
                                 <td><?php echo $row['phone']; ?></td>
                                 <td><?php echo $row['bloodtype']; ?></td>
                                 <td><?php echo $row['city']; ?></td>
-                                <td><?php echo $row['area']; ?></td>
-                                <td><?php echo timeAgo($row['dateadded']); ?></td>
+                                <td><?php echo $row['dateadded']; ?></td>
                             </tr>
                             <?php  } 
                                    ?>
@@ -59,18 +55,17 @@ while($row = mysqli_fetch_array($run)){
                 </div>
             </div>
 
-            
+
             <div class="card card-style1 border-0">
                 <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
-                    <table class="table-list col-lg-6">
-                    <h3 style="color: black;">Donor list</h3>
+                    <table class="table col-lg-6">
+                        <h3 style="color: black;">Donor list</h3>
                         <tr>
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Blood Group</th>
                             <th>City</th>
-                            <th>Area</th>
-                            <th>Requested</th>
+                            <th>Added</th>
                         </tr>
                         <tbody>
                             <?php
@@ -83,8 +78,7 @@ while($row = mysqli_fetch_array($run)){
                                 <td><?php echo $row['phone']; ?></td>
                                 <td><?php echo $row['bloodtype']; ?></td>
                                 <td><?php echo $row['city']; ?></td>
-                                <td><?php echo $row['area']; ?></td>
-                                <td><?php echo timeAgo($row['dateadded']); ?></td>
+                                <td><?php echo $row['dateadded']; ?></td>
                             </tr>
                             <?php  } 
                                    ?>

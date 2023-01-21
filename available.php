@@ -36,15 +36,16 @@ header("Location: bbportal.php");
                 <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                     <form action="" method="POST">
                         <h4 style="color: black; text-align:center">You're listed as a donor!</h4><em>
-                        <div class="center-box">
-                            <button type="" value="no" name="availablity" class="btn btn-info">Remove your listing as a
-                                donor!</button>
-                            <a class="btn btn-info" href="dashboard-nav.php">Back to dashboard</a>
-                        </div>
+                            <div class="center-box">
+                                <button type="" value="no" name="availablity" class="btn btn-info">Remove your listing
+                                    as a
+                                    donor!</button>
+                                <a class="btn btn-info" href="dashboard-nav.php">Back to dashboard</a>
+                            </div>
 
-                        <div class="msg">
-                            <?php if(isset($message)) { echo $message; } ?>
-                        </div>
+                            <div class="msg">
+                                <?php if(isset($message)) { echo $message; } ?>
+                            </div>
                     </form>
                 </div>
             </div><br>
@@ -52,16 +53,17 @@ header("Location: bbportal.php");
             <h3>Blood requests</h3><br>
             <div class="card card-style1 border-0">
                 <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
-                    <table class="table-list col-lg-12">
-                        <tr>
+                    <table class="table col-lg-12">
+                        <tbody>
+                            <tr>
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Blood Group</th>
                             <th>City</th>
                             <th>Area</th>
                             <th>Date & Time</th>
-                        </tr>
-                        <tbody>
+                            </tr>
+
                             <?php
                 $query = "select * from bloodrequestlist";
                 $run = mysqli_query($conn,$query);
@@ -75,8 +77,7 @@ header("Location: bbportal.php");
                                 <td><?php echo $row['area']; ?></td>
                                 <td><?php echo $row['dateadded']; ?></td>
                             </tr>
-                            <?php  } 
-            ?>
+                            <?php  } ?>
                         </tbody>
                     </table>
                 </div>

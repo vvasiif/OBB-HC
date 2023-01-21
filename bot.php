@@ -3,7 +3,6 @@ require_once 'connection.php';
 
 session_start();
 
-// echo "Welcome " . $_SESSION['email'];
 
 if($_SESSION['email']==NULL) { 
   include_once('prenav.php');
@@ -12,6 +11,19 @@ if($_SESSION['email']==NULL) {
 }
 
 $email = $_SESSION['email'];
+
+echo $email;
+$query = "select status from appointments where pat_email = '$email'";
+$run = mysqli_query($conn,$query);
+if($row=mysqli_fetch_array($run)){
+    if($row["status"]=="new" || $row["status"]=="booked"){
+        $msg = "You already have an appointment booked!";
+        header("Location: myappointments.php?msg= <?php echo $msg ?> ");
+    }
+    else{
+        echo "No app booked";
+    }
+}
 
 $query = "select * from users where email='$email'";
 $run = mysqli_query($conn,$query);

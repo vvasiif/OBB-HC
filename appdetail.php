@@ -14,6 +14,7 @@ while($row = mysqli_fetch_array($run)){
     $newtime = $row['new_meet_time'];
     $date = $row['meet_date'];
     $details =$row['details'];
+    $status = $row['status'];
 }
 
 $query = "select * from users where email='$pat_email'";
@@ -83,11 +84,13 @@ header("Location: consultant_dashboard.php");
                                 </form>
                                 <a class="btn btn-info" target="_blank"
                                     href="https://meet.jit.si/<?php echo $id ?>">Start session</a>
-                                <a class="btn btn-info" href="appointmentlist.php">Back</a>
 
                             </div>
                             <div class="col-lg-6 px-xl-10">
                                 <ul class="list-unstyled mb-1-9">
+                                <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Status:
+                                        </span><?php echo $status ?></li>
                                     <li class="mb-2 mb-xl-3 display-28"><span
                                             class="display-26 text-secondary me-2 font-weight-600">Name:
                                         </span><?php echo $username ?></li>

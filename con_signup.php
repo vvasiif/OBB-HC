@@ -89,7 +89,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
                 <div class="form-group">
                     <label for="inputCnic">CNIC</label>
-                    <input type="text"  maxlength="13" class="form-control" name="cnic" id="inputCnic" required>
+                    <input type="text" maxlength="13" class="form-control" name="cnic" id="inputCnic" required>
                 </div>
 
                 <div class="form-group">
@@ -347,7 +347,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 <div class="form-group">
                     <label for="inputQualification">Qualification</label>
                     <select id="inputGender" class="form-control" name="qualification" required>
-                        <option value="BACHELORS OF MEDICINE AND BACHELORS OF SURGERY (MBBS)">BACHELORS OF MEDICINE AND BACHELORS OF SURGERY (MBBS)</option>
+                        <option value="BACHELORS OF MEDICINE AND BACHELORS OF SURGERY (MBBS)">BACHELORS OF MEDICINE AND
+                            BACHELORS OF SURGERY (MBBS)</option>
                         <option value="BACHELORS OF DENTAL SURGERY (BDS)">BACHELORS OF DENTAL SURGERY (BDS)</option>
                         <option value="DOCTOR IN PHARMACY (PHARM.D)">DOCTOR IN PHARMACY (PHARM.D)</option>
                         <option value="BS PSYCHOLOGY">BS PSYCHOLOGY</option>
@@ -362,37 +363,37 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 <div class="form-group">
                     <label for="inputQualification">Specialization</label>
                     <select id="inputGender" class="form-control" name="specialization" required>
-                        <option value="Family Medicine">Family Medicine</option>
-                        <option value="Internal Medicine">Internal Medicine</option>
-                        <option value="Pediatrician">Pediatrician</option>
-                        <option value="Obstetricians/gynecologist">Obstetricians/gynecologist</option>
-                        <option value="Cardiologist">Cardiologist</option>
-                        <option value="Oncologist">Oncologist</option>
-                        <option value="Gastroenterologist">Gastroenterologist</option>
-                        <option value="Pulmonologist">Pulmonologist</option>
-                        <option value="Infectious disease">Infectious disease</option>
-                        <option value="Nephrologist">Nephrologist</option>
-                        <option value="Endocrinologist">Endocrinologist</option>
-                        <option value="Ophthalmologist">Ophthalmologist</option>
-                        <option value="Otolaryngologist">Otolaryngologist</option>
                         <option value="Dermatologist">Dermatologist</option>
-                        <option value="Psychiatrist">Psychiatrist</option>
-                        <option value="Radiologist">Radiologist</option>
+                        <option value="Immunologist">Immunologist</option>
+                        <option value="Gastroenterologist">Gastroenterologist</option>
+                        <option value="HIV specialist">HIV specialist</option>
+                        <option value="Endocrinologist">Endocrinologist</option>
+                        <option value="Primary care physician">Primary care physician</option>
+                        <option value="Pulmonologist">Pulmonologist</option>
+                        <option value="Cardiologist">Cardiologist</option>
                         <option value="Neurologist">Neurologist</option>
-                        <option value="Anesthesiologist">Anesthesiologist</option>
-                        <option value="Surgeon">Surgeon</option>
-
+                        <option value="Orthopedic or neurosurgeon">Orthopedic or neurosurgeon</option>
+                        <option value="Neurosurgeon">Neurosurgeon</option>
+                        <option value="Infectious disease specialist">Infectious disease specialist</option>
+                        <option value="Family medicine">Family medicine</option>
+                        <option value="Proctologist">Proctologist</option>
+                        <option value="Cardiologist">Cardiologist</option>
+                        <option value="Phlebologist">Phlebologist</option>
+                        <option value="Orthopedic surgeon">Orthopedic surgeon</option>
+                        <option value="Rheumatologist">Rheumatologist</option>
+                        <option value="ENT">ENT</option>
+                        <option value="Urologist">Urologist</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="inputQualification">Experience (years)</label>
-                    <input type="text"  maxlength="2" class="form-control" name="experience" id="inputCnic" required>
+                    <input type="text" maxlength="2" class="form-control" name="experience" id="inputCnic" required>
                 </div>
 
                 <div class="form-group">
                     <label for="inputQualification">Consultation fee</label>
-                    <input placeholder="PKR" type="text"  maxlength="4" class="form-control" name="fee" id="" required>
+                    <input placeholder="PKR" type="text" maxlength="4" class="form-control" name="fee" id="" required>
                 </div>
 
                 <div class="form-group">

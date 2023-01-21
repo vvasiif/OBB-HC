@@ -14,6 +14,7 @@ while($row = mysqli_fetch_array($run)){
     $concity = $row['city'];
     $conphone = $row['phone'];
     $fee = $row['fee'];
+    $rating = $row['avgrating'];
     $status = "new";
     $appointmentid = rand(1111111111,9999999999);
 
@@ -47,13 +48,12 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 <html>
 
 <head>
-<script type="text/javascript">
-    window.onload=function(){
-var today = new Date().toISOString().split('T')[0];
-document.getElementsByName("meetdate")[0].setAttribute('min', today);
+    <script type="text/javascript">
+    window.onload = function() {
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementsByName("meetdate")[0].setAttribute('min', today);
     }
-
-      </script> 
+    </script>
 
 </head>
 
@@ -96,13 +96,14 @@ document.getElementsByName("meetdate")[0].setAttribute('min', today);
                                                     class="display-26 text-secondary me-2 font-weight-600">Phone:
                                                 </span><?php echo $conphone; ?></li>
 
-                                                <li class="mb-2 mb-xl-3 display-28"><span
+                                            <li class="mb-2 mb-xl-3 display-28"><span
+                                                    class="display-26 text-secondary me-2 font-weight-600">Rating:
+                                                   
+                                                </span> <?php echo $rating; ?>/5</li>
+
+                                            <li class="mb-2 mb-xl-3 display-28"><span
                                                     class="display-26 text-secondary me-2 font-weight-600">Fee:
                                                 </span><?php echo $fee; ?> PKR</li>
-
-                                                <li class="mb-2 mb-xl-3 display-28"><span
-                                                    class="display-26 text-secondary me-2 font-weight-600">Rating:
-                                                </span></li>
                                         </ul>
                                     </div>
                                     <div class="col-lg-4 px-xl-10">
@@ -116,7 +117,8 @@ document.getElementsByName("meetdate")[0].setAttribute('min', today);
 
                                             <li class="mb-2 mb-xl-3 display-28">
                                                 <label for="">Time</label>
-                                                <input type="time" class="form-control" id="time" name="meettime" required>
+                                                <input type="time" class="form-control" id="time" name="meettime"
+                                                    required>
                                             </li>
 
                                             <label for="">Other details (optional)</label>
@@ -142,4 +144,3 @@ document.getElementsByName("meetdate")[0].setAttribute('min', today);
 </body>
 
 </html>
-
