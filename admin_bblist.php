@@ -1,7 +1,13 @@
 <?php
 require_once("postnav.php");
 include 'functions.php';
-// echo "Welcome " . $_SESSION['email'];
+
+if($_SESSION['log'] == "yes") { 
+    include_once 'postnav.php';
+  }
+  else {
+    header("Location: signin.php");
+  }
 
 
 $query = "select status from users where email = '$email'";

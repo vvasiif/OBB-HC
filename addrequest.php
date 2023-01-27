@@ -2,6 +2,13 @@
 include_once 'connection.php';
 include_once 'postnav.php';
 
+if($_SESSION['log'] == "yes") { 
+    include_once 'postnav.php';
+  }
+  else {
+    header("Location: signin.php");
+  }
+
 $email = $_SESSION['email'];
 
 $query = "select available from bloodrequestlist where email = '$email'";

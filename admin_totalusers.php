@@ -5,6 +5,13 @@ include_once('postnav.php');
 
 $email = $_SESSION['email'];
 
+if($_SESSION['log'] == "yes") { 
+    include_once 'postnav.php';
+  }
+  else {
+    header("Location: signin.php");
+  }
+
 ?>
 
 <!doctype html>

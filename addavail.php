@@ -3,15 +3,16 @@ include_once 'connection.php';
 include 'functions.php';
 session_start();
 
+if($_SESSION['log'] == "yes") { 
+    include_once 'postnav.php';
+  }
+  else {
+    header("Location: signin.php");
+  }
+
 
 $email = $_SESSION['email'];
 
-if($email == NULL) { 
-    header("Location: signin.php");
-  }
-  else{
-    include_once 'postnav.php';
-  }
 
   $query = "select available from bloodbanklist where email = '$email'";
   $run = mysqli_query($conn,$query);

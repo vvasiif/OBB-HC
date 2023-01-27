@@ -12,16 +12,12 @@ if($_SESSION['email']==NULL) {
 
 $email = $_SESSION['email'];
 
-echo $email;
 $query = "select status from appointments where pat_email = '$email'";
 $run = mysqli_query($conn,$query);
 if($row=mysqli_fetch_array($run)){
     if($row["status"]=="new" || $row["status"]=="booked"){
         $msg = "You already have an appointment booked!";
         header("Location: myappointments.php?msg= <?php echo $msg ?> ");
-    }
-    else{
-        echo "No app booked";
     }
 }
 

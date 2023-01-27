@@ -280,7 +280,7 @@ $email = $_SESSION['email'];
         </div><br>
         <div class="card card-style1 border-0">
             <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
-                <table class="table-list col-lg-12">
+                <table class="table col-lg-12">
                     <tr>
                         <th>Name</th>
                         <th>Phone</th>

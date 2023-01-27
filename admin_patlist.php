@@ -1,7 +1,14 @@
 <?php
 require_once 'postnav.php';
-// echo "Welcome " . $_SESSION['email'];
-    ?>
+
+if($_SESSION['log'] == "yes") { 
+    include_once 'postnav.php';
+  }
+  else {
+    header("Location: signin.php");
+  }
+
+?>
 <!doctype html>
 <html lang="en">
 

@@ -3,6 +3,13 @@ require_once 'connection.php';
 include 'functions.php';
 include_once('postnav.php');
 
+if($_SESSION['log'] == "yes") { 
+    include_once 'postnav.php';
+  }
+  else {
+    header("Location: signin.php");
+  }
+
 $email = $_SESSION['email'];
 
 ?>

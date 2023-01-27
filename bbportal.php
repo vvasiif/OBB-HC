@@ -2,7 +2,6 @@
 require_once 'connection.php';
 include_once 'postnav.php';
 
-// echo "Welcome " . $_SESSION['email'];
 
 if($_SESSION['log'] == "yes") { 
     include_once 'postnav.php';

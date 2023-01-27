@@ -38,7 +38,7 @@ $specialization = $_GET['specialization'];
                 while($row = mysqli_fetch_array($run)){
                     $count = $count + 1;
                     ?>
-            <div class="col-md-3">
+            <div style="padding: 10px;" class="col-lg-3">
                 <div class="card">
                     <div class="card-body">
                         <img src="images/placeholder.jpg" class="card-img-top" alt=""><br><br>

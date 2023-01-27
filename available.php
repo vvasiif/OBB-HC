@@ -4,7 +4,12 @@ include_once('postnav.php');
 
 $email = $_SESSION['email'];
 
-// echo "Welcome " . $_SESSION['email'];
+if($_SESSION['log'] == "yes") { 
+    include_once 'postnav.php';
+  }
+  else {
+    header("Location: signin.php");
+  }
 
 $query = "select available from bloodbanklist where email = '$email'";
             $run = mysqli_query($conn,$query);
