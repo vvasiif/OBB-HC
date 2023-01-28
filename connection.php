@@ -1,3 +1,5 @@
+<!-- Database connection -->
+
 <?php
 
 $DB_SERVER= "localhost";

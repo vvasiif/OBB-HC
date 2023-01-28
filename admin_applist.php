@@ -1,7 +1,10 @@
+<!-- Admin panel - Appointment list -->
+
 <?php
 require_once 'connection.php';
-include 'functions.php';
 include_once('postnav.php');
+
+session_start();
 
 if($_SESSION['log'] == "yes") { 
     include_once 'postnav.php';

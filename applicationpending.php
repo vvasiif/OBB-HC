@@ -1,6 +1,9 @@
+<!-- Waiting page for new consultant -->
+
 <?php
 include_once 'connection.php';
 include_once 'postnav.php';
+session_start();
 
 if($_SESSION['log'] == "yes") { 
     include_once 'postnav.php';

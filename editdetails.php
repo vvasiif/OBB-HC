@@ -1,6 +1,17 @@
+<!-- Edit profile details -->
+
 <?php
-include_once 'connection.php';
-require_once("postnav.php");
+require_once 'connection.php';
+include_once 'postnav.php';
+
+$email = $_SESSION['email'];
+
+if ($_SESSION['log'] == "yes") {
+    include_once 'postnav.php';
+} else {
+    header("Location: signin.php");
+}
+
 
 $email = $_SESSION['email'];
 

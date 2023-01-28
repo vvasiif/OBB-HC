@@ -1,17 +1,17 @@
-<?php
-require_once("postnav.php");
-include 'functions.php';
+<!-- View appointment list as a consultant -->
 
-if($_SESSION['log'] == "yes") { 
+<?php
+require_once "postnav.php";
+
+if ($_SESSION['log'] == "yes") {
     include_once 'postnav.php';
-  }
-  else {
+} else {
     header("Location: signin.php");
-  }
+}
 
 $id = $_GET['id'];
 
-    ?>
+?>
 
 <!doctype html>
 <html lang="en">
@@ -33,33 +33,32 @@ $id = $_GET['id'];
                             <th>Appointment date</th>
                             <th>Patient's preffered appointment time</th>
                             <th>New appointment time</th>
-                            <th>Booked</th>
+                            <th>Date/Time</th>
                             <th>Status</th>
 
                         </tr>
                         <tbody>
                             <?php
-                            if($id == 1){
-                                $query = "select * from appointments where con_email = '$email' && status = 'new' || status = 'booked'";
-                            }
-                            elseif($id == 2){
-                                $query = "select * from appointments where con_email = '$email' && status = 'completed' || status = 'absent'";
-                            }
+if ($id == 1) {
+    $query = "select * from appointments where con_email = '$email' && status = 'new' || status = 'booked'";
+} elseif ($id == 2) {
+    $query = "select * from appointments where con_email = '$email' && status = 'completed' || status = 'absent'";
+}
 
-                                $run = mysqli_query($conn,$query);
-                                while($row = mysqli_fetch_array($run)){ ?>
+$run = mysqli_query($conn, $query);
+while ($row = mysqli_fetch_array($run)) {?>
                             <tr>
                                 <td><?php echo $row['pat_email']; ?></td>
                                 <td><?php echo $row['meet_date']; ?></td>
                                 <td><?php echo $row['meet_time']; ?></td>
                                 <td><?php echo $row['new_meet_time']; ?></td>
-                                <td><?php echo timeAgo($row['datetime']); ?></td>
+                                <td><?php echo $row['datetime']; ?></td>
                                 <td><?php echo $row['status']; ?></td>
                                 <td><a class="btn btn-info"
                                         href="appdetail.php?id=<?php echo $row['appointmentid']; ?>">View</a></td>
                             </tr>
-                            <?php  } 
-                                   ?>
+                            <?php }
+?>
                         </tbody>
                     </table>
                 </div>

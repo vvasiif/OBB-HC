@@ -1,16 +1,17 @@
+<!-- Consultant Sign up -->
+
 <?php
 include_once 'connection.php';
 include_once 'prenav.php';
 
-if($_SERVER['REQUEST_METHOD']=="POST")
-{
-    $file=$_FILES['file']['name'];
-    $file_type=$_FILES['filf']['type'];
-    $file_size=$_FILES['file']['size'];
-    $file_tem_loc=$_FILES['file']['tmp_name'];
-    $file_store="file/".$file;
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $file = $_FILES['file']['name'];
+    $file_type = $_FILES['filf']['type'];
+    $file_size = $_FILES['file']['size'];
+    $file_tem_loc = $_FILES['file']['tmp_name'];
+    $file_store = "file/" . $file;
 
-    move_uploaded_file($file_tem_loc,$file_store);
+    move_uploaded_file($file_tem_loc, $file_store);
 
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -26,25 +27,24 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     $file = $_POST['file'];
     $role = "con";
     $status = "wait";
-    $requestid = rand(1111111111,9999999999);
+    $userid = rand(1111111111, 9999999999);
     $fee = $_POST['fee'];
 
     $query = "Select * FROM users WHERE email = ('$email')";
-    $run = mysqli_query($conn,$query);
+    $run = mysqli_query($conn, $query);
     $data = mysqli_fetch_array($run);
-    if($data > 0){
-        $message="A user with this e-mail already exists";
+    if ($data > 0) {
+        $message = "A user with this e-mail already exists";
+    } else {
+
+        $query = "insert into users (username,email,password,cnic,phone,dob,city,gender,role,qualification,specialization,experience,file,status,userid,fee)
+    value ('$username','$email','$password','$cnic','$phone','$dob','$city','$gender','$role','$qualification','$specialization','$experience','$file','$status','$userid','$fee')";
+
+        mysqli_query($conn, $query);
+
+        header("Location: signin.php");
+        die;
     }
-    else{
-  
-    $query = "insert into users (username,email,password,cnic,phone,dob,city,gender,role,qualification,specialization,experience,file,status,userid,fee) 
-    value ('$username','$email','$password','$cnic','$phone','$dob','$city','$gender','$role','$qualification','$specialization','$experience','$file','$status','$requestid','$fee')";
-
-    mysqli_query($conn, $query);
-
-    header("Location: signin.php");
-    die;
-}
 }
 
 ?>
@@ -406,7 +406,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
             </form>
 
             <div class="msg">
-                <?php if(isset($message)) { echo $message; } ?>
+                <?php if (isset($message)) {echo $message;}?>
             </div>
         </div>
     </div>

@@ -1,6 +1,9 @@
+<!-- Admin panel - Total users list -->
+
+
 <?php
+
 require_once 'connection.php';
-include 'functions.php';
 include_once('postnav.php');
 
 $email = $_SESSION['email'];

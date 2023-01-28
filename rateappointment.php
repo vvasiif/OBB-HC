@@ -1,26 +1,34 @@
-<?php 
-include_once 'connection.php';
-require_once("postnav.php");
+<!-- Rate appointments -->
 
-// $email = $_SESSION['email'];
+<?php
+require_once 'connection.php';
+include_once 'postnav.php';
+
+$email = $_SESSION['email'];
+
+if ($_SESSION['log'] == "yes") {
+    include_once 'postnav.php';
+} else {
+    header("Location: signin.php");
+}
+
 
 $id = $_GET['id'];
 
-
 $query = "select * from appointments where appointmentid = '$id'";
-$run = mysqli_query($conn,$query);
-while($row = mysqli_fetch_array($run)){
+$run = mysqli_query($conn, $query);
+while ($row = mysqli_fetch_array($run)) {
     $con_email = $row['con_email'];
     $pat_email = $row['pat_email'];
     $time = $row['meet_time'];
     $newtime = $row['new_meet_time'];
     $date = $row['meet_date'];
-    $details =$row['details'];
+    $details = $row['details'];
 }
 
 $query = "select * from users where email='$con_email'";
-$run = mysqli_query($conn,$query);
-while($row = mysqli_fetch_array($run)){
+$run = mysqli_query($conn, $query);
+while ($row = mysqli_fetch_array($run)) {
     $username = $row['username'];
     $email = $row['email'];
     $dob = $row['dob'];
@@ -36,36 +44,30 @@ while($row = mysqli_fetch_array($run)){
     $role = $row['role'];
 }
 
-if($_SERVER['REQUEST_METHOD']=="POST")
-{
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-$rating = $_POST['rating'];
-$remarks = $_POST['remarks'];
+    $rating = $_POST['rating'];
+    $remarks = $_POST['remarks'];
 
-mysqli_query($conn,"UPDATE appointments set rating = '" . $rating . "' WHERE appointmentid = '" . $id . "'");
-mysqli_query($conn,"UPDATE appointments set remarks = '" . $remarks . "' WHERE appointmentid = '" . $id . "'");
+    mysqli_query($conn, "UPDATE appointments set rating = '" . $rating . "' WHERE appointmentid = '" . $id . "'");
+    mysqli_query($conn, "UPDATE appointments set remarks = '" . $remarks . "' WHERE appointmentid = '" . $id . "'");
 
+    $query = "select * from appointments where con_email = '$con_email' && status = 'completed'";
+    $run = mysqli_query($conn, $query);
+    $ratingsum = 0;
+    $totalrating = 0;
+    while ($row = mysqli_fetch_array($run)) {
+        $ratingsum = $ratingsum + $row['rating'];
+        $totalrating++;
+    }
 
-$query = "select * from appointments where con_email = '$con_email' && status = 'completed'";
-$run = mysqli_query($conn,$query);
-$ratingsum = 0;
-$totalrating = 0;
-while($row = mysqli_fetch_array($run)){
-$ratingsum = $ratingsum + $row['rating'];
-$totalrating++;
-}
+    $avgrating = $ratingsum / $totalrating;
 
-$avgrating = round($ratingsum/$totalrating, 1);
+    mysqli_query($conn, "UPDATE users set avgrating = '" . $avgrating . "' WHERE email = '" . $con_email . "'");
 
-mysqli_query($conn,"UPDATE users set avgrating = '" . $avgrating . "' WHERE email = '" . $con_email . "'");
-
-
-
-header("Location: myappointments.php");
-
+    header("Location: myappointments.php");
 
 }
-
 
 ?>
 

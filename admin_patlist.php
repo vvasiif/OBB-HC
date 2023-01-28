@@ -1,3 +1,6 @@
+<!-- Admin panel - Patients and other users list -->
+
+
 <?php
 require_once 'postnav.php';
 

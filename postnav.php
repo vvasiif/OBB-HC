@@ -1,3 +1,5 @@
+<!-- Navigation after Sign in -->
+
 <?php
 require('connection.php');
 session_start();

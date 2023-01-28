@@ -1,6 +1,17 @@
+<!-- Disease result page -->
+
 <?php
 require_once 'connection.php';
-include_once('postnav.php');
+include_once 'postnav.php';
+
+$email = $_SESSION['email'];
+
+if ($_SESSION['log'] == "yes") {
+    include_once 'postnav.php';
+} else {
+    header("Location: signin.php");
+}
+
 
 $sym1 = $_GET['sym1'];
 $sym2 = $_GET['sym2'];

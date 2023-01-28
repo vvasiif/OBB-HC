@@ -1,12 +1,16 @@
+<!-- Admin panel - New consultant waitlist list -->
+
+
 <?php
 require_once 'postnav.php';
 
-if($_SESSION['log'] == "yes") { 
+session_start();
+
+if ($_SESSION['log'] == "yes") {
     include_once 'postnav.php';
-  }
-  else {
+} else {
     header("Location: signin.php");
-  }
+}
 
 ?>
 
@@ -31,18 +35,18 @@ if($_SESSION['log'] == "yes") {
                     </tr>
                     <tbody>
                         <?php
-                $query = "select * from users where role = 'con' && status = 'wait'";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    ?>
+$query = "select * from users where role = 'con' && status = 'wait'";
+$run = mysqli_query($conn, $query);
+while ($row = mysqli_fetch_array($run)) {
+    ?>
                         <tr>
                             <td><?php echo $row['username']; ?></td>
                             <td><?php echo $row['phone']; ?></td>
                             <td><?php echo $row['city']; ?></td>
                             <td><a class="btn btn-info" href="condetails.php?id=<?php echo $row['userid']; ?>">View</a></td>
                         </tr>
-                        <?php  } 
-            ?>
+                        <?php }
+?>
                     </tbody>
                 </table>
             </div>

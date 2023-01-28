@@ -1,7 +1,17 @@
+<!-- Search blood donors -->
+
 <?php
-include_once 'connection.php';
-session_start();
+require_once 'connection.php';
 include_once 'postnav.php';
+
+$email = $_SESSION['email'];
+
+if ($_SESSION['log'] == "yes") {
+    include_once 'postnav.php';
+} else {
+    header("Location: signin.php");
+}
+
 
 $email = $_SESSION['email'];
 
@@ -292,17 +302,16 @@ $email = $_SESSION['email'];
                     <tbody>
                         <?php
 
-if($_SERVER['REQUEST_METHOD']=="POST")
-{
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $city = $_POST['city'];
     $bloodtype = $_POST['bloodtype'];
     $count = 0;
-                $query = "select * from bloodbanklist where city = '$city' AND bloodtype = '$bloodtype'";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    $count = $count + 1;
-                    ?>
+    $query = "select * from bloodbanklist where city = '$city' AND bloodtype = '$bloodtype'";
+    $run = mysqli_query($conn, $query);
+    while ($row = mysqli_fetch_array($run)) {
+        $count = $count + 1;
+        ?>
                         <tr>
                             <td><?php echo $row['username']; ?></td>
                             <td><?php echo $row['phone']; ?></td>
@@ -312,11 +321,11 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                             <td><?php echo $row['dateadded']; ?></td>
                         </tr>
 
-                        <?php  } 
-            
-                $message = $count . " donors available in " . $_POST['city'] . " with " . $_POST['bloodtype'] . " blood !";
+                        <?php }
 
-            }?>
+    $message = $count . " donors available in " . $_POST['city'] . " with " . $_POST['bloodtype'] . " blood !";
+
+}?>
 
                     </tbody>
                 </table><br>
@@ -324,7 +333,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         </div>
 
         <div class="msg">
-            <?php if(isset($message)) { echo $message; } ?> 
+            <?php if (isset($message)) {echo $message;}?>
             <a class="btn btn-info" href="addrequest.php">Post a blood request on portal</a> <br>
         </div>
 

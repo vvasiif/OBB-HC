@@ -1,15 +1,16 @@
+<!-- View appointments list as a patient -->
+
 <?php
 require_once 'connection.php';
-include 'functions.php';
-include_once('postnav.php');
+include_once 'postnav.php';
 
 $email = $_SESSION['email'];
 
 $message = $_GET['msg'];
 
 $query = "select * from appointments where pat_email = '$email' && status = 'new'";
-$run = mysqli_query($conn,$query);
-while($row1 = mysqli_fetch_array($run)){
+$run = mysqli_query($conn, $query);
+while ($row1 = mysqli_fetch_array($run)) {
 
 }
 
@@ -36,15 +37,15 @@ while($row1 = mysqli_fetch_array($run)){
                     </tr>
                     <tbody>
                         <?php
-                $query = "select * from appointments where pat_email = '$email' && (status = 'new' || status = 'booked')";
-                $run = mysqli_query($conn,$query);
-                while($row1 = mysqli_fetch_array($run)){
-                    $con_email = $row1['con_email']; 
-         
-                    $query = "select * from users where email = '$con_email'";
-                $run = mysqli_query($conn,$query);
-                while($row2 = mysqli_fetch_array($run)){
-                    ?>
+$query1 = "select * from appointments where pat_email = '$email' && (status = 'new' || status = 'booked')";
+$run1 = mysqli_query($conn, $query1);
+while ($row1 = mysqli_fetch_array($run1)) {
+    $con_email = $row1['con_email'];
+
+    $query2 = "select * from users where email = '$con_email'";
+    $run2 = mysqli_query($conn, $query2);
+    while ($row2 = mysqli_fetch_array($run2)) {
+        ?>
                         <tr scope="row">
                             <td><?php echo $row2['username']; ?></td>
                             <td><?php echo $row2['phone']; ?></td>
@@ -55,7 +56,7 @@ while($row1 = mysqli_fetch_array($run)){
                             <td><?php echo $row1['status']; ?></td>
                             <td><a style="margin-top: -5px;" class="btn btn-info"  target="_blank" href="https://meet.jit.si/<?php echo $row1['appointmentid'] ?>">Start</a></td>
                         </tr>
-                        <?php  } }?>
+                        <?php }}?>
                     </tbody>
                 </table>
             </div>
@@ -77,15 +78,15 @@ while($row1 = mysqli_fetch_array($run)){
                     </thead>
                     <tbody>
                         <?php
-                $query = "select * from appointments where pat_email = '$email'  && status = 'completed'  || status = 'absent'";
-                $run = mysqli_query($conn,$query);
-                while($row1 = mysqli_fetch_array($run)){
-                    $con_email = $row1['con_email']; 
-        
-                    $query = "select * from users where email = '$con_email'";
-                $run = mysqli_query($conn,$query);
-                while($row2 = mysqli_fetch_array($run)){
-                    ?>
+$query3 = "select * from appointments where pat_email = '$email'  && status = 'completed'  || status = 'absent'";
+$run3 = mysqli_query($conn, $query3);
+while ($row1 = mysqli_fetch_array($run3)) {
+    $con_email = $row1['con_email'];
+
+    $query4 = "select * from users where email = '$con_email'";
+    $run4 = mysqli_query($conn, $query4);
+    while ($row2 = mysqli_fetch_array($run4)) {
+        ?>
                         <tr scope="row">
                             <td><?php echo $row2['username']; ?></td>
                             <td><?php echo $row2['specialization']; ?></td>
@@ -95,15 +96,12 @@ while($row1 = mysqli_fetch_array($run)){
 
                             <td><a class="btn btn-info"href="rateappointment.php?id=<?php echo $row1['appointmentid'] ?>">Rate</a></td>
                         </tr>
-                        <?php  } }?>
+                        <?php }}?>
                     </tbody>
                 </table>
-                <div class="center-box">
-                    <a class="btn btn-info" href="dashboard-nav.php">Back to dashboard</a>
-                </div>
 
                 <div class="msg">
-                    <?php if(isset($message)) { echo $message; } ?>
+                    <?php if (isset($message)) {echo $message;}?>
                 </div>
             </div>
         </div>

@@ -1,5 +1,4 @@
-
-
+<!-- Sign out -->
 
 <?php
 session_start();

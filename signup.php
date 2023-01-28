@@ -1,3 +1,5 @@
+<!-- Normal sign up page -->
+
 <?php
 include_once 'connection.php';
 include_once 'prenav.php';
@@ -14,7 +16,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     $dob = $_POST['dob'];
     $gender = $_POST['gender'];
     $role = "pat";
-    $requestid = rand(1111111111,9999999999);
+    $userid = rand(1111111111,9999999999);
 
     
 
@@ -27,7 +29,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     else{
 
     $query = "insert into users (username,email,cnic,password,phone,dob,city,gender,role,userid)
-    value ('$username','$email','$cnic','$password','$phone','$dob','$city','$gender','$role','$requestid')";
+    value ('$username','$email','$cnic','$password','$phone','$dob','$city','$gender','$role','$userid')";
 
     mysqli_query($conn, $query);
 

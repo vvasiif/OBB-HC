@@ -1,6 +1,10 @@
+<!-- View appointment details as a consultant -->
+
 <?php 
 include_once 'connection.php';
 require_once("postnav.php");
+
+session_start();
 
 if($_SESSION['log'] == "yes") { 
     include_once 'postnav.php';

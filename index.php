@@ -1,9 +1,9 @@
+<!-- LAnding page -->
+
 <?php
 require_once 'connection.php';
 
 session_start();
-
-// echo "Welcome " . $_SESSION['email'];
 
 if($_SESSION['email']==NULL) { 
   include_once('prenav.php');
@@ -33,9 +33,6 @@ if($_SESSION['email']==NULL) {
             </div>
         </div>
     </div>
-
-
-
 
 </body>
 

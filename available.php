@@ -1,3 +1,5 @@
+<!-- Already listed as a donor page -->
+
 <?php
 require_once 'connection.php';
 include_once('postnav.php');
@@ -25,8 +27,6 @@ $availablity = $_POST['availablity'];
 mysqli_query($conn,"DELETE FROM bloodbanklist WHERE email='" . $email . "'");
 header("Location: bbportal.php");
 
-// $query = "select * from bloodbanklist where email = '$email'";
-// $run = mysqli_query($conn,$query);
 }
 
 ?>

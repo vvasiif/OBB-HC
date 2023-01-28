@@ -1,21 +1,29 @@
+<!-- Change password page -->
+
 <?php
-include_once 'connection.php';
-require_once("postnav.php");
-
-
-if($_SERVER['REQUEST_METHOD']=="POST")
-{
-  
+require_once 'connection.php';
+include_once('postnav.php');
 
 $email = $_SESSION['email'];
-header('profile.php');
-$currentpassword = $_POST['currentpassword'];
+
+if($_SESSION['log'] == "yes") { 
+    include_once 'postnav.php';
+  }
+  else {
+    header("Location: signin.php");
+  }
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+    $email = $_SESSION['email'];
+    header('profile.php');
+    $currentpassword = $_POST['currentpassword'];
     $newpassword = $_POST['newpassword'];
     $confirmpassword = $_POST['confirmpassword'];
     $query = "select * from users where email='$email'";
-    $run = mysqli_query($conn,$query);
-    
-    while($row = mysqli_fetch_array($run)){
+    $run = mysqli_query($conn, $query);
+
+    while ($row = mysqli_fetch_array($run)) {
         $username = $row['username'];
         $password = $row['password'];
         $city = $row['city'];
@@ -24,19 +32,17 @@ $currentpassword = $_POST['currentpassword'];
         $qualification = $row['qualification'];
         $file = $row['file'];
     }
-    
-    if($newpassword == $confirmpassword) {
-      if($currentpassword == $password) {
-      mysqli_query($conn,"UPDATE users set password='" . $newpassword . "' WHERE email='" . $email . "'");
-      $message="Password changed!";
+
+    if ($newpassword == $confirmpassword) {
+        if ($currentpassword == $password) {
+            mysqli_query($conn, "UPDATE users set password='" . $newpassword . "' WHERE email='" . $email . "'");
+            $message = "Password changed!";
+        } else {
+            $message = "Wrong password!";
+        }
+    } else {
+        $message = "New password do not match!";
     }
-    else{
-      $message="Wrong password!";
-    }
-  }
-  else{
-    $message="New password do not match!";
-  }
 }
 header('profile.php');
 
@@ -66,7 +72,7 @@ header('profile.php');
                 <button type="submit" value="Submit" name="submit" class="btn btn-info">Update password</button>
             </form>
             <div class="msg">
-                <?php if(isset($message)) { echo $message; } ?>
+                <?php if (isset($message)) {echo $message;}?>
             </div>
                     </div>
           </div>

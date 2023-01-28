@@ -1,13 +1,24 @@
+<!-- Enter details and book appointment page -->
+
 <?php
-include_once 'connection.php';
-include_once 'postnav.php';
+require_once 'connection.php';
+include_once('postnav.php');
+
+$email = $_SESSION['email'];
+
+if($_SESSION['log'] == "yes") { 
+    include_once 'postnav.php';
+  }
+  else {
+    header("Location: signin.php");
+  }
 
 $conid = $_GET['id'];
 $patemail = $_SESSION['email'];
 
 $query = "select * from users where userid = $conid";
-$run = mysqli_query($conn,$query);
-while($row = mysqli_fetch_array($run)){ 
+$run = mysqli_query($conn, $query);
+while ($row = mysqli_fetch_array($run)) {
     $conspec = $row['specialization'];
     $conusername = $row['username'];
     $conemail = $row['email'];
@@ -16,31 +27,22 @@ while($row = mysqli_fetch_array($run)){
     $fee = $row['fee'];
     $rating = $row['avgrating'];
     $status = "new";
-    $appointmentid = rand(1111111111,9999999999);
+    $appointmentid = rand(1111111111, 9999999999);
 
 }
 
-// $query = "select * from users where email = $patemail";
-// $run = mysqli_query($conn,$query);
-// while($row = mysqli_fetch_array($run)){ 
-//     $cond = $row['userid'];
-// }
-
-if($_SERVER['REQUEST_METHOD']=="POST")
-{
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $meet_date = $_POST['meetdate'];
     $meet_time = $_POST['meettime'];
     $details = $_POST['details'];
     $patemail = $_SESSION['email'];
 
-
-    $query = "insert into appointments (pat_email,con_email,details,meet_time,meet_date,status,appointmentid) 
+    $query = "insert into appointments (pat_email,con_email,details,meet_time,meet_date,status,appointmentid)
     value ('$patemail','$conemail','$details','$meet_time','$meet_date','$status','$appointmentid')";
     mysqli_query($conn, $query);
 
     header("Location: payment.php");
 
-//     }
 }
 
 ?>
@@ -98,7 +100,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
                                             <li class="mb-2 mb-xl-3 display-28"><span
                                                     class="display-26 text-secondary me-2 font-weight-600">Rating:
-                                                   
+
                                                 </span> <?php echo $rating; ?>/5</li>
 
                                             <li class="mb-2 mb-xl-3 display-28"><span

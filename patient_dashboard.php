@@ -1,7 +1,7 @@
+<!-- PAtient main dashboard -->
+
 <?php
 require_once("postnav.php");
-
-// echo "Welcome " . $_SESSION['email'];
 
 ?>
 

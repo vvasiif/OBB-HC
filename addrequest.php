@@ -1,6 +1,10 @@
+<!-- Posting a blood reguest -->
+
 <?php
 include_once 'connection.php';
 include_once 'postnav.php';
+
+session_start();
 
 if($_SESSION['log'] == "yes") { 
     include_once 'postnav.php';
@@ -52,14 +56,14 @@ header('Location: deleterequest.php');
 }
 }
 
-if (isset($_GET['deleterequest'])) {
+// if (isset($_GET['deleterequest'])) {
 
-    $requestid = $_GET['requestid'];
-    echo $requestid;
-    mysqli_query($conn,"DELETE FROM bloodrequestlist WHERE requestid='" . $requestid . "'");
+//     $requestid = $_GET['requestid'];
+//     echo $requestid;
+//     mysqli_query($conn,"DELETE FROM bloodrequestlist WHERE requestid='" . $requestid . "'");
 
-    // header("Location: addrequest.php");
-} 
+//     // header("Location: addrequest.php");
+// } 
 
 
         

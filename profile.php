@@ -1,20 +1,24 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-
-</head>
+<!-- User details page -->
 
 <?php
-include_once 'connection.php';
-require_once("postnav.php");
+require_once 'connection.php';
+include_once 'postnav.php';
+
+$email = $_SESSION['email'];
+
+if ($_SESSION['log'] == "yes") {
+    include_once 'postnav.php';
+} else {
+    header("Location: signin.php");
+}
+
 
 $email = $_SESSION['email'];
 
 $query = "select * from users where email='$email'";
-$run = mysqli_query($conn,$query);
+$run = mysqli_query($conn, $query);
 
-while($row = mysqli_fetch_array($run)){
+while ($row = mysqli_fetch_array($run)) {
     $username = $row['username'];
     $password = $row['password'];
     $dob = $row['dob'];
@@ -29,6 +33,14 @@ while($row = mysqli_fetch_array($run)){
 $_SESSION['role'] = $role;
 
 ?>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+
+</head>
+
 
 <body>
 

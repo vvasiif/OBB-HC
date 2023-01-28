@@ -1,8 +1,16 @@
+<!-- Consultant list of a specific speciality -->
+
 <?php
-include_once 'connection.php';
-session_start();
+require_once 'connection.php';
 include_once 'postnav.php';
 
+$email = $_SESSION['email'];
+
+if ($_SESSION['log'] == "yes") {
+    include_once 'postnav.php';
+} else {
+    header("Location: signin.php");
+}
 
 
 $email = $_SESSION['email'];
@@ -15,9 +23,7 @@ if($row=mysqli_fetch_array($run)){
     }
 }
 
-
 $specialization = $_GET['specialization'];
-// echo $specialization;
 
 ?>
 
@@ -54,9 +60,7 @@ $specialization = $_GET['specialization'];
             <?php } $message = $count . " doctors/consultants found for $specialization!" ?>
         </div>
 
-   
            <p class="msg"> <?php if(isset($message)) { if($count < 1)  { echo $message; } } ?> </p> 
-
 
     </div>
 

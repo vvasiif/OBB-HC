@@ -1,7 +1,17 @@
+<!-- Recomment consultant after disease prediction -->
+
 <?php
-include_once 'connection.php';
-session_start();
+require_once 'connection.php';
 include_once 'postnav.php';
+
+$email = $_SESSION['email'];
+
+if ($_SESSION['log'] == "yes") {
+    include_once 'postnav.php';
+} else {
+    header("Location: signin.php");
+}
+
 
 $email = $_SESSION['email'];
 

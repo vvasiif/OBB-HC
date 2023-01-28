@@ -1,8 +1,16 @@
+<!-- Payment gateway -->
+
 <?php
-require_once("postnav.php");
-// echo "Welcome " . $_SESSION['email'];
+require_once 'connection.php';
+include_once 'postnav.php';
 
+$email = $_SESSION['email'];
 
+if ($_SESSION['log'] == "yes") {
+    include_once 'postnav.php';
+} else {
+    header("Location: signin.php");
+}
 
 ?>
 <!doctype html>

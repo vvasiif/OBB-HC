@@ -1,31 +1,29 @@
+<!-- Adding availablity as donor -->
+
 <?php
 include_once 'connection.php';
-include 'functions.php';
 session_start();
 
-if($_SESSION['log'] == "yes") { 
+if ($_SESSION['log'] == "yes") {
     include_once 'postnav.php';
-  }
-  else {
+} else {
     header("Location: signin.php");
-  }
-
+}
 
 $email = $_SESSION['email'];
 
+$query = "select available from bloodbanklist where email = '$email'";
+$run = mysqli_query($conn, $query);
+if ($row = mysqli_fetch_array($run)) {
+    if ($row["available"] == "yes") {
+        header("Location: available.php");
+    }
+}
 
-  $query = "select available from bloodbanklist where email = '$email'";
-  $run = mysqli_query($conn,$query);
-  if($row=mysqli_fetch_array($run)){
-      if($row["available"]=="yes"){
-          header("Location: available.php");
-      }
-  }
+$query = "select * from users where email='$email'";
+$run = mysqli_query($conn, $query);
 
-  $query = "select * from users where email='$email'";
-  $run = mysqli_query($conn,$query);
-
-  while($row = mysqli_fetch_array($run)){
+while ($row = mysqli_fetch_array($run)) {
     $username = $row['username'];
     $password = $row['password'];
     $dob = $row['dob'];
@@ -36,20 +34,19 @@ $email = $_SESSION['email'];
     $file = $row['file'];
 }
 
-  if($_SERVER['REQUEST_METHOD']=="POST")
-  {
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $bloodgroup = $_POST['bloodtype'];
     $area = $_POST['area'];
     $available = "yes";
 
-  $query = "insert into bloodbanklist (username,email,phone,bloodtype,city,area,available) value ('$username','$email','$phone','$bloodgroup','$city','$area','$available')";
-  mysqli_query($conn, $query);
-  // $message = "Donor listed!";
-header("Location: available.php");
+    $query = "insert into bloodbanklist (username,email,phone,bloodtype,city,area,available) value ('$username','$email','$phone','$bloodgroup','$city','$area','$available')";
+    mysqli_query($conn, $query);
+    // $message = "Donor listed!";
+    header("Location: available.php");
 }
 
-  ?>
+?>
 
 <!doctype html>
 <html lang="en">
@@ -93,7 +90,7 @@ header("Location: available.php");
                         availability</button>
                 </form>
                 <div class="msg">
-                    <?php if(isset($message)) { echo $message; } ?>
+                    <?php if (isset($message)) {echo $message;}?>
                 </div><br>
             </div>
         </div><br>
@@ -111,20 +108,20 @@ header("Location: available.php");
                     </tr>
                     <tbody>
                         <?php
-                $query = "select * from bloodrequestlist";
-                $run = mysqli_query($conn,$query);
-                while($row = mysqli_fetch_array($run)){
-                    ?>
+$query = "select * from bloodrequestlist";
+$run = mysqli_query($conn, $query);
+while ($row = mysqli_fetch_array($run)) {
+    ?>
                         <tr>
                             <td><?php echo $row['username']; ?></td>
                             <td><?php echo $row['phone']; ?></td>
                             <td><?php echo $row['bloodtype']; ?></td>
                             <td><?php echo $row['city']; ?></td>
                             <td><?php echo $row['area']; ?></td>
-                            <td><?php echo timeAgo($row['dateadded']); ?></td>
+                            <td><?php echo $row['dateadded']; ?></td>
                         </tr>
-                        <?php  } 
-            ?>
+                        <?php }
+?>
                     </tbody>
                 </table>
             </div>

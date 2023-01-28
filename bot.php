@@ -1,30 +1,33 @@
+<!-- Dr Bot page -->
+
 <?php
 require_once 'connection.php';
+include_once('postnav.php');
 
-session_start();
+$email = $_SESSION['email'];
 
-
-if($_SESSION['email']==NULL) { 
-  include_once('prenav.php');
-}else{
-  include_once('postnav.php');
-}
+if($_SESSION['log'] == "yes") { 
+    include_once 'postnav.php';
+  }
+  else {
+    header("Location: signin.php");
+  }
 
 $email = $_SESSION['email'];
 
 $query = "select status from appointments where pat_email = '$email'";
-$run = mysqli_query($conn,$query);
-if($row=mysqli_fetch_array($run)){
-    if($row["status"]=="new" || $row["status"]=="booked"){
+$run = mysqli_query($conn, $query);
+if ($row = mysqli_fetch_array($run)) {
+    if ($row["status"] == "new" || $row["status"] == "booked") {
         $msg = "You already have an appointment booked!";
         header("Location: myappointments.php?msg= <?php echo $msg ?> ");
     }
 }
 
 $query = "select * from users where email='$email'";
-$run = mysqli_query($conn,$query);
+$run = mysqli_query($conn, $query);
 
-while($row = mysqli_fetch_array($run)){
+while ($row = mysqli_fetch_array($run)) {
     $username = $row['username'];
     $password = $row['password'];
     $dob = $row['dob'];
@@ -97,7 +100,7 @@ $_SESSION['role'] = $role;
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="form-group col-lg-2">
-                            <select id="inputGender" class="form-control" name="sym1" required>
+                            <select id="" class="form-control" name="sym1" required>
                                 <option value="">Symptom 1</option>
                                 <option value="itching">Itching</option>
                                 <option value="skin_rash">Skin rash</option>
@@ -234,7 +237,7 @@ $_SESSION['role'] = $role;
                             </select>
                         </div>
                         <div class="form-group col-lg-2">
-                            <select id="inputGender" class="form-control" name="sym2" required>
+                            <select id="" class="form-control" name="sym2" required>
                                 <option value="">Symptom 2</option>
                                 <option value="itching">Itching</option>
                                 <option value="skin_rash">Skin rash</option>
@@ -371,7 +374,7 @@ $_SESSION['role'] = $role;
                             </select>
                         </div>
                         <div class="form-group col-lg-2">
-                            <select id="inputGender" class="form-control" name="sym3" required>
+                            <select id="" class="form-control" name="sym3" required>
                                 <option value="">Symptom 3</option>
                                 <option value="itching">Itching</option>
                                 <option value="skin_rash">Skin rash</option>
