@@ -5,13 +5,18 @@ include_once 'connection.php';
 include_once 'prenav.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $file = $_FILES['file']['name'];
-    $file_type = $_FILES['filf']['type'];
-    $file_size = $_FILES['file']['size'];
-    $file_tem_loc = $_FILES['file']['tmp_name'];
-    $file_store = "file/" . $file;
 
-    move_uploaded_file($file_tem_loc, $file_store);
+    $file = $_FILES["file"];
+    move_uploaded_file($file["tmp_name"], "files/" . $file["name"]);
+
+    $file_name = $file["name"];
+    $file_content = file_get_contents("files/" . $file_name);
+
+    $pic = $_FILES["pic"];
+    move_uploaded_file($pic["tmp_name"], "pics/" . $pic["name"]);
+
+    $pic_name = $pic["name"];
+    $pic_content = file_get_contents("pics/" . $pic_name);
 
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -24,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $qualification = $_POST['qualification'];
     $specialization = $_POST['specialization'];
     $experience = $_POST['experience'];
-    $file = $_POST['file'];
     $role = "con";
     $status = "wait";
     $userid = rand(1111111111, 9999999999);
@@ -37,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $message = "A user with this e-mail already exists";
     } else {
 
-        $query = "insert into users (username,email,password,cnic,phone,dob,city,gender,role,qualification,specialization,experience,file,status,userid,fee)
-    value ('$username','$email','$password','$cnic','$phone','$dob','$city','$gender','$role','$qualification','$specialization','$experience','$file','$status','$userid','$fee')";
+        $query = "insert into users (username,email,password,cnic,phone,dob,city,gender,role,qualification,specialization,experience,file,image,status,userid,fee)
+    value ('$username','$email','$password','$cnic','$phone','$dob','$city','$gender','$role','$qualification','$specialization','$experience','$file_name','$pic_name','$status','$userid','$fee')";
 
         mysqli_query($conn, $query);
 
@@ -58,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body>
     <div class="bg">
         <div class="container smallcontainer">
-            <form action="" method="POST">
+            <form action="" enctype="multipart/form-data" method="POST">
 
                 <div class="form-group">
                     <h3>Consultant Sign Up</h3>
@@ -84,7 +88,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 <div class="form-group">
                     <label for="dateofbirth">Date of birth</label>
-                    <input type="date" class="form-control" name="dob" id="dob" required>
+                    <input type="date" class="form-control" name="dob" id="dob" min="1950-01-01" max="2010-12-31"
+                        required>
                 </div>
 
                 <div class="form-group">
@@ -397,12 +402,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 </div>
 
                 <div class="form-group">
-                    <label for="inputFileName">Upload your resume</label>
-                    <input type="file" class="form-control" name="file" id="customFile" />
+                    <label for="pdf_file">Resume File:</label>
+                    <input type="file" id="pdf_file" name="file" accept="application/pdf" required>
                 </div>
+
                 <div class="form-group">
+                    <label for="pdf_file">Your Picture:</label>
+                    <input type="file" id="pdf_file" name="pic" accept="image/jpeg" required>
                 </div>
-                <button type="submit" value="Submit" name="submit" class="btn btn-info">Sign up</button>
+
+                <div class="form-group">
+                    <button type="submit" value="Submit" name="submit" class="btn btn-info">Sign up</button>
+                </div>
             </form>
 
             <div class="msg">

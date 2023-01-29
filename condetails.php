@@ -15,6 +15,7 @@ if ($_SESSION['log'] == "yes") {
 
 $id = $_GET['id'];
 
+
 $email = $_SESSION['email'];
 
 $query = "select * from users where userid='$id'";
@@ -31,8 +32,11 @@ while ($row = mysqli_fetch_array($run)) {
     $specialization = $row['specialization'];
     $experience = $row['experience'];
     $fee = $row['fee'];
-    $file = $row['file'];
+    // $file = $row['file'];
     $role = $row['role'];
+    $file_name = $row["file"];
+    $picture_filename = $row['image'];
+
 }
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -54,21 +58,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body>
 
     <div class="container">
-        <h3>Your Details</h3><br>
+        <h3>Consultant Details</h3><br>
         <div class="row">
             <div class="col-lg-12 mb-4 mb-sm-5">
                 <div class="card card-style1 border-0">
                     <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                         <div class="row align-items-center">
                             <div class="col-lg-4 mb-4 mb-lg-4">
-                                <img src="images/placeholder.jpg" height="300px" alt="..."><br><br>
+                                <?php echo '<img src="pics/'.$picture_filename .'" height="400px" width="300px" alt="...">'; ?>
+                                <br><br>
                                 <form action="" method="POST">
                                     <label for="">Update status</label>
                                     <select id="" class="form-control" name="status" required>
                                         <option selected value="wait">Wait</option>
                                         <option value="reject">Reject</option>
                                         <option value="accept">Accept</option>
-                                    </select>
+                                    </select><br>
                                     <button type="submit" value="Submit" name="submit"
                                         class="btn btn-info">Confirm</button>
                                 </form>
@@ -108,6 +113,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                     <li class="mb-2 mb-xl-3 display-28"><span
                                             class="display-26 text-secondary me-2 font-weight-600">Fee:
                                         </span><?php echo $fee ?> pkr</li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">
+                                        </span><a class="btn btn-info" href="files/<?php echo $file_name; ?>"
+                                            target="_blank">Consultant's Resume</a></li>
+
+
+
+
                                 </ul>
                             </div>
                         </div>

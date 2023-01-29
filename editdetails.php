@@ -34,14 +34,12 @@ while($row = mysqli_fetch_array($run)){
 
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
-    $username = $_POST['username'];
-    $phone = $_POST['phone'];
-    $city = $_POST['city'];
-
     mysqli_query($conn,"UPDATE users set username='" . $username . "' WHERE email='" . $email . "'");
     mysqli_query($conn,"UPDATE users set phone='" . $phone . "' WHERE email='" . $email . "'");
     mysqli_query($conn,"UPDATE users set city='" . $city . "' WHERE email='" . $email . "'");
+
     header('Location: profile.php');
+
   }
   
 ?>
@@ -54,15 +52,12 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
 <body>
     <div class="bg">
-        <div class="container">
+        <div class="container smallcontainer">
             <h3>Edit Details</h3>
             <div class="card card-style1 border-0">
                 <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                     <form action="" method="POST">
-                        <div class="form-group">
-                            <label for="text">Profile picture</label><br>
-                            <input type="file" name="file" id="file">
-                        </div>
+
 
                         <div class="form-group">
                             <label for="text">Name</label>

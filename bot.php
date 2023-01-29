@@ -21,23 +21,25 @@ if ($row = mysqli_fetch_array($run)) {
     if ($row["status"] == "new" || $row["status"] == "booked") {
         $msg = "You already have an appointment booked!";
         header("Location: myappointments.php?msg= <?php echo $msg ?> ");
-    }
+}
 }
 
 $query = "select * from users where email='$email'";
 $run = mysqli_query($conn, $query);
 
 while ($row = mysqli_fetch_array($run)) {
-    $username = $row['username'];
-    $password = $row['password'];
-    $dob = $row['dob'];
-    $city = $row['city'];
-    $cnic = $row['cnic'];
-    $phone = $row['phone'];
-    $gender = $row['gender'];
-    $qualification = $row['qualification'];
-    $file = $row['file'];
-    $role = $row['role'];
+$username = $row['username'];
+$password = $row['password'];
+$dob = $row['dob'];
+$city = $row['city'];
+$cnic = $row['cnic'];
+$phone = $row['phone'];
+$gender = $row['gender'];
+$qualification = $row['qualification'];
+$file = $row['file'];
+$role = $row['role'];
+$picture_filename = $row['image'];
+
 }
 $_SESSION['role'] = $role;
 
@@ -58,7 +60,7 @@ $_SESSION['role'] = $role;
                     <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                         <div class="row align-items-center">
                             <div class="col-lg-4 mb-4 mb-lg-4">
-                                <img src="images/placeholder.jpg" height="300px" alt="...">
+                                <?php echo '<img src="pics/'.$picture_filename .'" height="300px" width="300px" alt="...">'; ?>
                             </div>
                             <div class="col-lg-6 px-xl-10">
                                 <ul class="list-unstyled mb-1-9">

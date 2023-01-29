@@ -65,7 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <label for="inputPassword">Password</label>
                     <input type="password" class="form-control" id="inputPassword" name="password" required>
                 </div>
+                <div class="form-group">
                 <button type="submit" value="Submit" name="submit" class="btn btn-info">Sign in</button>
+                </div>
             </form>
             <div class="msg">
                 <?php if (isset($message)) {echo $message;}?>

@@ -42,6 +42,8 @@ while ($row = mysqli_fetch_array($run)) {
     $fee = $row['fee'];
     $file = $row['file'];
     $role = $row['role'];
+    $picture_filename = $row['image'];
+
 }
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -85,8 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                         <div class="row align-items-center">
                             <div class="col-lg-4 mb-4 mb-lg-4">
-                                <img src="images/placeholder.jpg" height="300px" alt="..."><br><br>
-
+                                <?php echo '<img src="pics/'.$picture_filename .'" height="300px" width="300px" alt="...">'; ?>
                             </div>
                             <div class="col-lg-6 px-xl-10">
                                 <ul class="list-unstyled mb-1-9">

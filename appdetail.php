@@ -42,14 +42,11 @@ while($row = mysqli_fetch_array($run)){
     $fee = $row['fee'];
     $file = $row['file'];
     $role = $row['role'];
+    $picture_filename = $row['image'];
+
 }
 
-if(isset($_POST["update"]))
-{
-    $status = $_POST['status'];
-    mysqli_query($conn,"UPDATE appointments set status='" . $status . "' WHERE appointmentid='" . $id . "'");
-    header("Location: consultant_dashboard.php");
-}
+
 
 if(isset($_POST["confirm"]))
 {
@@ -80,24 +77,26 @@ header("Location: consultant_dashboard.php");
                     <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                         <div class="row align-items-center">
                             <div class="col-lg-4 mb-4 mb-lg-4">
-                                <img src="images/placeholder.jpg" height="300px" alt="..."><br><br>
 
+                                <?php echo '<img src="pics/'.$picture_filename .'" height="300px" width="300px" alt="...">'; ?>
+
+                                <br><br>
                                 <form action="" method="POST">
-                                    <label for="">Comfirm appointment time</label>
+                                    <label for="">Confirm appointment time</label>
                                     <input value="<?php echo $time ?>" type="time" class="form-control" id="time"
                                         name="meettime" required>
                                     </select>
 
-                                    <button type="submit" value="confirm" name="confirm" class="btn btn-info">Confirm
+                                    <br><button type="submit" value="confirm" name="confirm"
+                                        class="btn btn-info">Confirm appointment time &
                                         booking</button>
                                 </form>
-                                <a class="btn btn-info" target="_blank"
-                                    href="https://meet.jit.si/<?php echo $id ?>">Start session</a>
+
 
                             </div>
                             <div class="col-lg-6 px-xl-10">
                                 <ul class="list-unstyled mb-1-9">
-                                <li class="mb-2 mb-xl-3 display-28"><span
+                                    <li class="mb-2 mb-xl-3 display-28"><span
                                             class="display-26 text-secondary me-2 font-weight-600">Status:
                                         </span><?php echo $status ?></li>
                                     <li class="mb-2 mb-xl-3 display-28"><span
@@ -132,16 +131,6 @@ header("Location: consultant_dashboard.php");
                                             class="display-26 text-secondary me-2 font-weight-600">Additional detail:
                                         </span><?php echo $details ?></li>
                                     <br>
-                                    <form action="" method="POST">
-                                        <label for="">Appointment status</label>
-                                        <select id="inputGender" class="form-control" name="status" required>
-                                            <option selected>----</option>
-                                            <option value="completed">Completed</option>
-                                            <option value="absent">Didn't happen</option>
-                                        </select>
-                                        <button type="submit" value="update" name="update"  class="btn btn-info">update</button>
-                                    </form>
-                                 
                                 </ul>
                             </div>
                         </div>

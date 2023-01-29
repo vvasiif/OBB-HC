@@ -54,7 +54,7 @@ while ($row1 = mysqli_fetch_array($run1)) {
                             <td><?php echo $row1['meet_time']; ?></td>
                             <td><?php echo $row1['new_meet_time']; ?></td>
                             <td><?php echo $row1['status']; ?></td>
-                            <td><a style="margin-top: -5px;" class="btn btn-info"  target="_blank" href="https://meet.jit.si/<?php echo $row1['appointmentid'] ?>">Start</a></td>
+                            <td><a style="margin-top: -5px;" class="btn btn-info" href="appointmentsession.php?appid=<?php echo $row1['appointmentid'] ?>">Start</a></td>
                         </tr>
                         <?php }}?>
                     </tbody>

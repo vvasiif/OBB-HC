@@ -56,7 +56,7 @@ header('profile.php');
 
 <body>
     <div class="bg">
-        <div class="container">
+        <div class="container smallcontainer">
           <h3>Change Password</h3>
           <div class="card card-style1 border-0">
                     <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">

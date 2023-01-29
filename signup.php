@@ -6,6 +6,12 @@ include_once 'prenav.php';
 
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
+
+    $pic = $_FILES["pic"];
+    move_uploaded_file($pic["tmp_name"], "pics/" . $pic["name"]);
+
+    $pic_name = $pic["name"];
+    $pic_content = file_get_contents("pics/" . $pic_name);
    
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -18,8 +24,6 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     $role = "pat";
     $userid = rand(1111111111,9999999999);
 
-    
-
     $query = "Select * FROM users WHERE email = ('$email')";
     $run = mysqli_query($conn,$query);
     $data = mysqli_fetch_array($run);
@@ -28,8 +32,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     }
     else{
 
-    $query = "insert into users (username,email,cnic,password,phone,dob,city,gender,role,userid)
-    value ('$username','$email','$cnic','$password','$phone','$dob','$city','$gender','$role','$userid')";
+    $query = "insert into users (username,email,cnic,password,phone,dob,city,image,gender,role,userid)
+    value ('$username','$email','$cnic','$password','$phone','$dob','$city','$pic_name','$gender','$role','$userid')";
 
     mysqli_query($conn, $query);
 
@@ -49,7 +53,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 <body>
     <div class="bg">
         <div class="container smallcontainer">
-            <form action="" method="POST">
+            <form action="" enctype="multipart/form-data" method="POST">
 
                 <div class="form-group">
                     <h3>Sign Up</h3>
@@ -80,8 +84,10 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
                 <div class="form-group">
                     <label for="dateofbirth">Date of birth</label>
-                    <input type="date" class="form-control" name="dob" id="dob" required>
+                    <input type="date" class="form-control" name="dob" id="dob" min="1950-01-01" max="2010-12-31"
+                        required>
                 </div>
+
 
                 <div class="form-group">
                     <label for="inputCity">City</label>
@@ -337,8 +343,14 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 </div>
 
                 <div class="form-group">
+                    <label for="pdf_file">Your Picture:</label>
+                    <input type="file" id="pdf_file" name="pic" accept="image/jpeg" required>
                 </div>
-                <button type="submit" value="Submit" name="submit" class="btn btn-info">Sign up</button>
+
+
+                <div class="form-group">
+                    <button type="submit" value="Submit" name="submit" class="btn btn-info">Sign up</button>
+                </div>
             </form>
 
             <div class="msg">

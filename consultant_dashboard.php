@@ -23,12 +23,19 @@ while ($row = mysqli_fetch_array($run)) {
 }
 
 $newapp = 0;
+$conapp = 0;
 $preapp = 0;
 
-$query = "select * from appointments where status = 'booked' || status = 'new' && con_email = '$email'";
+$query = "select * from appointments where status = 'new' && con_email = '$email'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $newapp++;
+}
+
+$query = "select * from appointments where status = 'booked' && con_email = '$email'";
+$run = mysqli_query($conn, $query);
+while ($row = mysqli_fetch_array($run)) {
+    $conapp++;
 }
 
 $query = "select * from appointments where con_email = '$email' && status = 'completed' || status = 'absent'";
@@ -51,9 +58,14 @@ while ($row = mysqli_fetch_array($run)) {
         <div class="col-lg-12">
             <h3>Consultant Dashboard</h3>
             <div class="col-lg-12 list-btn">
-                <a href="appointmentlist.php?id=1&con=<?php echo $con ?>"><button type="button" class="btn-large">New Appointments
+                <a href="appointmentlist.php?id=1&con=<?php echo $con ?>"><button type="button" class="btn-large">New
+                        Appointments
                         (<?php echo $newapp ?>)</button></a>
-                <a href="appointmentlist.php?id=2&con=<?php echo $con ?>"><button type="button" class="btn-large">Previous Appointments
+                <a href="confirmedapplist.php?con=<?php echo $con ?>"><button type="button" class="btn-large">Confirmed
+                        Appointments
+                        (<?php echo $conapp ?>)</button></a>
+                <a href="appointmentlist.php?id=2&con=<?php echo $con ?>"><button type="button"
+                        class="btn-large">Previous Appointments
                         (<?php echo $preapp ?>)</button></a>
             </div>
         </div>

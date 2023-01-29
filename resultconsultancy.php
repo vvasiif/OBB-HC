@@ -167,12 +167,14 @@ switch ($result) {
                 $query = "select * from users where role = 'con' && specialization = '$specialization' && status = 'accept'";
                 $run = mysqli_query($conn,$query);
                 while($row = mysqli_fetch_array($run)){
+                    $picture_filename = $row['image'];
+
                     $count = $count + 1;
                     ?>
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <img src="images/placeholder.jpg" class="card-img-top" alt=""><br><br>
+                    <?php echo '<img src="pics/'.$picture_filename .'" height="250px" width="220px" alt="...">'; ?>
                         <p class="con-name"><?php echo $row['username'] ?></h4></p>
                         <p class="con-spec"><?php echo $row['specialization'] ?></p>
                         <p class="con-spec"><?php echo "Experience: " . $row['experience'] . " years" ?></p>

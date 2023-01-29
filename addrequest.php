@@ -55,18 +55,7 @@ if (isset($_POST['postrequest'])) {
 header('Location: deleterequest.php');
 }
 }
-
-// if (isset($_GET['deleterequest'])) {
-
-//     $requestid = $_GET['requestid'];
-//     echo $requestid;
-//     mysqli_query($conn,"DELETE FROM bloodrequestlist WHERE requestid='" . $requestid . "'");
-
-//     // header("Location: addrequest.php");
-// } 
-
-
-        
+    
   ?>
 
 <!doctype html>

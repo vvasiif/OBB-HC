@@ -12,7 +12,6 @@ if ($_SESSION['log'] == "yes") {
     header("Location: signin.php");
 }
 
-
 $email = $_SESSION['email'];
 
 $query = "select * from users where email='$email'";
@@ -29,6 +28,7 @@ while ($row = mysqli_fetch_array($run)) {
     $qualification = $row['qualification'];
     $file = $row['file'];
     $role = $row['role'];
+    $picture_filename = $row['image'];
 }
 $_SESSION['role'] = $role;
 
@@ -51,9 +51,15 @@ $_SESSION['role'] = $role;
                 <div class="card card-style1 border-0">
                     <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                         <div class="row align-items-center">
+
+
                             <div class="col-lg-4 mb-4 mb-lg-4">
-                                <img src="images/placeholder.jpg" height="300px" alt="...">
+                                <?php
+   
+    echo '<img src="pics/'.$picture_filename .'" height="400px" width="300px" alt="...">';
+  ?>
                             </div>
+
                             <div class="col-lg-6 px-xl-10">
                                 <ul class="list-unstyled mb-1-9">
                                     <li class="mb-2 mb-xl-3 display-28"><span
@@ -77,6 +83,7 @@ $_SESSION['role'] = $role;
                                     <li class="mb-2 mb-xl-3 display-28"><span
                                             class="display-26 text-secondary me-2 font-weight-600">Phone:
                                         </span><?php echo $phone ?></li>
+
                                 </ul>
                             </div>
                         </div>

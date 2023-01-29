@@ -86,12 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <label for="">Area</label>
                         <input type="text" class="form-control" id="text" name="area" required>
                     </div>
-                    <button type="submit" value="Submit" name="submit" class="btn btn-info">Post
-                        availability</button>
+                    <div class="form-group">
+                        <button type="submit" value="Submit" name="submit" class="btn btn-info">Post
+                            availability</button>
+                    </div>
                 </form>
-                <div class="msg">
-                    <?php if (isset($message)) {echo $message;}?>
-                </div><br>
             </div>
         </div><br>
         <h3>Blood Requests</h3>
