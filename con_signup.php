@@ -78,8 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 <div class="form-group">
                     <label for="inputPhone">Phone number</label>
-                    <input type="tel" class="form-control" name="phone" id="inputPhone" placeholder="03*********"
-                        onkeypress='return event.charCode>=48 && event.charCode<=57' pattern="[0-9]{11}" required>
+                    <input type="tel" class="form-control" maxlength="11" name="phone" id="inputPhone"
+                        placeholder="03*********" required>
                 </div>
 
                 <div class="form-group">

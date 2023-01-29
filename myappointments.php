@@ -23,7 +23,7 @@ while ($row1 = mysqli_fetch_array($run)) {
     <div class="container">
         <div class="card card-style1 border-0">
             <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
-                <h4 style="color: black; text-align:center;">Upcoming Appointments</h4>
+                <h4 style="color: black; text-align:center;">Upcoming Appointments (One at a time)</h4>
                 <table class="table col-lg-12">
                     <tr>
                         <th scope="col">Consultant</th>

@@ -68,7 +68,6 @@ while ($row = mysqli_fetch_array($run)) {
                                 <?php }?>
                             </tbody>
                         </table><br>
-                        <h2 class="msg">Every request gets automatically<br>deleted after three days of posting!</h2>
                         <div class="center-box">
                             <a class="btn btn-info" href="dashboard-nav.php">Back to dashboard</a>
                         </div>

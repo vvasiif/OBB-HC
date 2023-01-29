@@ -16,6 +16,19 @@ if($_SESSION['log'] == "yes") {
 $conid = $_GET['id'];
 $patemail = $_SESSION['email'];
 
+
+// $query = "select * from users where userid = $conid";
+
+$query = "select * from appointments where pat_email = '$patemail' && status = 'new' || status = 'booked'";
+$run = mysqli_query($conn, $query);
+while ($row = mysqli_fetch_array($run)) {
+
+    if($row['status'] == "new" || $row['status'] == "booked"){}
+    header("Location: myappointments.php");
+}
+
+
+
 $query = "select * from users where userid = $conid";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
@@ -30,6 +43,7 @@ while ($row = mysqli_fetch_array($run)) {
     $appointmentid = rand(1111111111, 9999999999);
 
 }
+
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $meet_date = $_POST['meetdate'];
