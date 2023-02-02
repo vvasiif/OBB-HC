@@ -13,13 +13,6 @@ if($_SESSION['log'] == "yes") {
     header("Location: signin.php");
   }
 
-$query = "select status from users where email = '$email'";
-$run = mysqli_query($conn, $query);
-while ($row = mysqli_fetch_array($run)) {
-    if ($row['status'] == 'wait' || $row['status'] == 'reject') {
-        header("Location: applicationpending.php");
-    }
-}
 ?>
 
 

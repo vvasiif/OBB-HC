@@ -29,7 +29,6 @@ if($_SESSION['log'] == "yes") {
                             <th>Name</th>
                             <th>Phone</th>
                             <th>City</th>
-                            <th>Status</th>
                         </tr>
                         <tbody>
                             <?php
@@ -41,7 +40,6 @@ if($_SESSION['log'] == "yes") {
                                 <td><?php echo $row['username']; ?></td>
                                 <td><?php echo $row['phone']; ?></td>
                                 <td><?php echo $row['city']; ?></td>
-                                <td><?php echo $row['status']; ?></td>
                             </tr>
                             <?php  } 
             ?>

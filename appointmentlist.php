@@ -40,9 +40,9 @@ $id = $_GET['id'];
                         <tbody>
                             <?php
 if ($id == 1) {
-    $query = "select * from appointments where con_email = '$email' && status = 'new' || status = 'booked'";
+    $query = "select * from appointments where con_email = '$email' && status = 'new' && payment = 'yes'";
 } elseif ($id == 2) {
-    $query = "select * from appointments where con_email = '$email' && status = 'completed' || status = 'absent'";
+    $query = "select * from appointments where con_email = '$email' && payment = 'yes' && status = 'completed' || status = 'absent'";
 }
 
 $run = mysqli_query($conn, $query);

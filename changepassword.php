@@ -57,25 +57,29 @@ header('profile.php');
 <body>
     <div class="bg">
         <div class="container smallcontainer">
-          <h3>Change Password</h3>
-          <div class="card card-style1 border-0">
-                    <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
-            <form action="" method="POST">
-                <div class="form-group">
-                    <label for="inputPassword">Current password</label>
-                    <input type="password" class="form-control" id="password" name="currentpassword" required><br>
-                    <label for="inputPassword">Enter a new password</label>
-                    <input type="password" class="form-control" id="password" name="newpassword" required><br>
-                    <label for="inputPassword">Confirm new password</label>
-                    <input type="password" class="form-control" id="password" name="confirmpassword" required>
-                </div>
-                <button type="submit" value="Submit" name="submit" class="btn btn-info">Update password</button>
-            </form>
-            <div class="msg">
-                <?php if (isset($message)) {echo $message;}?>
-            </div>
+            <h3>Change Password</h3>
+            <div class="card card-style1 border-0">
+                <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <label for="inputPassword">Current password</label>
+                            <input type="password" class="form-control" id="password" name="currentpassword"
+                                required><br>
+                            <label for="inputPassword">Enter a new password</label>
+                            <input type="password" class="form-control" id="password" name="newpassword" required><br>
+                            <label for="inputPassword">Confirm new password</label>
+                            <input type="password" class="form-control" id="password" name="confirmpassword" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" value="Submit" name="submit" class="btn btn-info">Update
+                                password</button>
+                        </div>
+                    </form>
+                    <div class="msg">
+                        <?php if (isset($message)) {echo $message;}?>
                     </div>
-          </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

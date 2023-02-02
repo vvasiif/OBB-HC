@@ -1,6 +1,8 @@
-<!-- LAnding page -->
+<!-- Landing page -->
 
 <?php
+error_reporting(0);
+
 require_once 'connection.php';
 
 session_start();

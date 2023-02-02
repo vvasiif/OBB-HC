@@ -29,14 +29,24 @@ while($row = mysqli_fetch_array($run)){
     $qualification = $row['qualification'];
     $file = $row['file'];
     $role = $row['role'];
+    $weight = $row['weight'];
+    $height = $row['height'];
 }
 
 
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
+    $username = $_POST['username'];
+    $phone = $_POST['phone'];
+    $city = $_POST['city'];
+    $height = $_POST['height'];
+    $weight = $_POST['weight'];
+
     mysqli_query($conn,"UPDATE users set username='" . $username . "' WHERE email='" . $email . "'");
     mysqli_query($conn,"UPDATE users set phone='" . $phone . "' WHERE email='" . $email . "'");
     mysqli_query($conn,"UPDATE users set city='" . $city . "' WHERE email='" . $email . "'");
+    mysqli_query($conn,"UPDATE users set height='" . $height . "' WHERE email='" . $email . "'");
+    mysqli_query($conn,"UPDATE users set weight='" . $weight . "' WHERE email='" . $email . "'");
 
     header('Location: profile.php');
 
@@ -61,14 +71,14 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
                         <div class="form-group">
                             <label for="text">Name</label>
-                            <input type="text" class="form-control" value="<?php echo $username ?>" id="inputName"
+                            <input type="text" class="form-control" value="<?php echo $username ?>" id="alphabetInput"
                                 name="username" required>
                         </div>
 
                         <div class="form-group">
                             <label for="text">Phone number</label>
                             <input type="tel" class="form-control" maxlength="11" value="<?php echo $phone ?>"
-                                name="phone" id="inputPhone"
+                                name="phone" id="numericInput"
                                 onkeypress='return event.charCode>=48 && event.charCode<=57' pattern="[0-9]{11}"
                                 required>
                         </div>
@@ -317,7 +327,35 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                             </select>
                         </div>
 
-                        <button type="submit" value="Submit" name="submit" class="btn btn-info">Update</button>
+                        <div class="form-group">
+                            <label for="dateofbirth">Height (cm)</label>
+                            <select class="form-control" name="height" id="heightSelect" required>
+                                <?php
+      for ($i = 50; $i <= 250; $i++) {
+        $selected = ($i == $height) ? 'selected' : '';
+        echo "<option value='$i' $selected>$i</option>";
+      }
+    ?>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="dateofbirth">Weight (kg)</label>
+                            <select class="form-control" name="weight" id="weightSelect" required>
+                                <?php
+      for ($i = 30; $i <= 300; $i++) {
+        $selected = ($i == $weight) ? 'selected' : '';
+        echo "<option value='$i' $selected>$i</option>";
+      }
+    ?>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <button type="submit" value="Submit" name="submit" class="btn btn-info">Update</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -326,3 +364,15 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 </body>
 
 </html>
+
+
+<script>
+const inputField = document.querySelector("#alphabetInput");
+inputField.addEventListener("input", function() {
+    let value = inputField.value;
+    let letters = /^[A-Za-z\s]+$/;
+    if (!value.match(letters)) {
+        inputField.value = value.substring(0, value.length - 1);
+    }
+});
+</script>

@@ -20,6 +20,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     $phone = $_POST['phone'];
     $cnic = $_POST['cnic'];
     $dob = $_POST['dob'];
+    $height = $_POST['height'];
+    $weight = $_POST['weight'];
     $gender = $_POST['gender'];
     $role = "pat";
     $userid = rand(1111111111,9999999999);
@@ -32,8 +34,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     }
     else{
 
-    $query = "insert into users (username,email,cnic,password,phone,dob,city,image,gender,role,userid)
-    value ('$username','$email','$cnic','$password','$phone','$dob','$city','$pic_name','$gender','$role','$userid')";
+    $query = "insert into users (username,email,cnic,password,phone,dob,city,height,weight,image,gender,role,userid)
+    value ('$username','$email','$cnic','$password','$phone','$dob','$city','$height','$weight','$pic_name','$gender','$role','$userid')";
 
     mysqli_query($conn, $query);
 
@@ -58,7 +60,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 <div class="form-group">
                     <h3>Sign Up</h3>
                     <label for="inputName">Full name</label>
-                    <input type="text" class="form-control" id="inputName" name="username" required>
+                    <input type="text" class="form-control" id="alphabetInput" name="username" required>
                 </div>
 
                 <div class="form-group">
@@ -68,7 +70,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
                 <div class="form-group">
                     <label for="inputPassword">Password</label>
-                    <input type="password" class="form-control" id="inputPassword" name="password" required>
+                    <input type="password" class="form-control" minlength="8" maxlength="30" id="inputPassword" name="password" required>
                 </div>
 
                 <div class="form-group">
@@ -81,6 +83,31 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                     <input type="tel" class="form-control" maxlength="11" name="phone" id="inputPhone"
                         placeholder="03*********" required>
                 </div>
+
+                <div class="form-group">
+                            <label for="dateofbirth">Height (cm)</label>
+                            <select class="form-control" name="height" id="heightSelect" required>
+                                <?php
+      for ($i = 50; $i <= 250; $i++) {
+        $selected = ($i == $height) ? 'selected' : '';
+        echo "<option value='$i' $selected>$i</option>";
+      }
+    ?>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="dateofbirth">Weight (kg)</label>
+                            <select class="form-control" name="weight" id="weightSelect" required>
+                                <?php
+      for ($i = 30; $i <= 300; $i++) {
+        $selected = ($i == $weight) ? 'selected' : '';
+        echo "<option value='$i' $selected>$i</option>";
+      }
+    ?>
+                            </select>
+                        </div>
 
                 <div class="form-group">
                     <label for="dateofbirth">Date of birth</label>
@@ -361,3 +388,15 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 </body>
 
 </html>
+
+<script>
+  const inputField = document.querySelector("#alphabetInput");
+  inputField.addEventListener("input", function() {
+    let value = inputField.value;
+    let letters = /^[A-Za-z\s]+$/;
+    if (!value.match(letters)) {
+      inputField.value = value.substring(0, value.length - 1);
+    }
+  });
+</script>
+

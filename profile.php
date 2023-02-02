@@ -18,9 +18,12 @@ $query = "select * from users where email='$email'";
 $run = mysqli_query($conn, $query);
 
 while ($row = mysqli_fetch_array($run)) {
+    $userid = $row['userid'];
     $username = $row['username'];
     $password = $row['password'];
     $dob = $row['dob'];
+    $weight = $row['weight'];
+    $height = $row['height'];
     $city = $row['city'];
     $cnic = $row['cnic'];
     $phone = $row['phone'];
@@ -78,6 +81,12 @@ $_SESSION['role'] = $role;
                                             class="display-26 text-secondary me-2 font-weight-600">DoB:
                                         </span><?php echo $dob ?></li>
                                     <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Height:
+                                        </span><?php echo $height ?> cm</li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span
+                                            class="display-26 text-secondary me-2 font-weight-600">Weight:
+                                        </span><?php echo $weight ?> kg</li>
+                                    <li class="mb-2 mb-xl-3 display-28"><span
                                             class="display-26 text-secondary me-2 font-weight-600">Gender:
                                         </span><?php echo $gender ?></li>
                                     <li class="mb-2 mb-xl-3 display-28"><span
@@ -90,16 +99,25 @@ $_SESSION['role'] = $role;
                     </div>
                     <div class="col-lg-12 data">
                         <a class="btn btn-info" href="changepassword.php">Change password</a>
-                        <a class="btn btn-info" href="editdetails.php">Edit details</a> <br>
+                        <a class="btn btn-info" href="editdetails.php">Edit details</a>
+                        <a onclick="return deleteAccount(<?php echo $userid; ?>)" class="btn btn-info" href="#">Delete account</a> <br>
+
+
                     </div>
                 </div>
             </div>
         </div>
-
-
-
     </div>
     </div>
 </body>
 
 </html>
+
+<script>
+  function deleteAccount(userid) {
+    if (confirm("Are you sure you want to delete your account?")) {
+      window.location.href = "deleteaccount.php?id=" + userid;
+    }
+    return false;
+  }
+</script>

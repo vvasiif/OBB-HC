@@ -18,11 +18,13 @@ $appid = $_GET['appid'];
 
 if(isset($_POST["update"]))
 {
-    $status = $_POST['status'];
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+
+   echo $status = $_POST['status'];
     mysqli_query($conn,"UPDATE appointments set status='" . $status . "' WHERE appointmentid='" . $appid . "'");
     header("Location: consultant_dashboard.php");
 }
-
+}
 
 
 ?>
@@ -34,9 +36,10 @@ if(isset($_POST["update"]))
 
     <style>
     .status {
-        <?php if($role =='pat') {
+        <?php if($role=='pat') {
             echo 'display:none';
         }
+
         ?>
     }
     </style>
@@ -65,18 +68,23 @@ if(isset($_POST["update"]))
 
                 <br><br>
                 <div class="status">
-                    <form action="" method="POST">
-                        <label for="">Update appointment status at the end of the session</label>
-                        <select id="inputGender" class="form-control" name="status" required>
-                            <option value="none" selected>----</option>
-                            <option value="completed">Completed</option>
-                            <option value="absent">Didn't happen</option>
-                        </select>
-                        <br><button type="submit" value="update" name="update" class="btn btn-info">End session and
-                            update status</button>
-                    </form>
-                </div>
+                    <div class="text-center">
+                        <form action="" method="POST">
+                            <label for="">Update appointment status at the end of the session</label>
+                            <select id="" class="form-group" name="status" required>
+                                <option value="none" selected>----</option>
+                                <option value="completed">Completed</option>
+                                <option value="absent">Didn't happen</option>
+                            </select>
 
+                            <button type="submit" value="update" name="update" class="form-group btn btn-info">End
+                                session and
+                                update status</button>
+                        </form>
+                    </div>
+
+
+                </div>
             </div>
         </div>
     </div>

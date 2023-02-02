@@ -17,8 +17,6 @@ $conid = $_GET['id'];
 $patemail = $_SESSION['email'];
 
 
-// $query = "select * from users where userid = $conid";
-
 $query = "select * from appointments where pat_email = '$patemail' && status = 'new' || status = 'booked'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
@@ -26,7 +24,6 @@ while ($row = mysqli_fetch_array($run)) {
     if($row['status'] == "new" || $row['status'] == "booked"){}
     header("Location: myappointments.php");
 }
-
 
 
 $query = "select * from users where userid = $conid";
@@ -42,8 +39,6 @@ while ($row = mysqli_fetch_array($run)) {
     $status = "new";
     $appointmentid = rand(1111111111, 9999999999);
     $picture_filename = $row['image'];
-
-
 }
 
 
@@ -57,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     value ('$patemail','$conemail','$details','$meet_time','$meet_date','$status','$appointmentid')";
     mysqli_query($conn, $query);
 
-    header("Location: payment.php");
+    header("Location: payment.php?appid=$appointmentid&fee=$fee");
 
 }
 

@@ -40,13 +40,15 @@ while ($row = mysqli_fetch_array($run)) {
 $query = "select * from users where role = 'pat'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
-    $conlist = $conlist + 1;
+    $patlist = $patlist + 1;
+
 }
 
 $query = "select * from users where role = 'con'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
-    $patlist = $patlist + 1;
+    $conlist = $conlist + 1;
+
 }
 
 $query = "select * from appointments";
@@ -83,13 +85,13 @@ while ($row = mysqli_fetch_array($run)) {
             <a href="admin_newcon.php"><button type="button" class="btn-large">Consultants/Doctors Waitlist (<?php echo $newcon ?>)</button></a>
             </div>
             <div class="col-lg-6 list-btn">
-            <a href="admin_conlist.php"><button type="button" class="btn-large">Consultant/Doctors (<?php echo $patlist ?>)</button></a>
+            <a href="admin_conlist.php"><button type="button" class="btn-large">Consultant/Doctors (<?php echo $conlist ?>)</button></a>
             </div>
             <div class="col-lg-6 list-btn">
-            <a href="admin_patlist.php"><button type="button" class="btn-large">Patients & Other Users (<?php echo $conlist ?>)</button></a>
+            <a href="admin_patlist.php"><button type="button" class="btn-large">Patients & Other Users (<?php echo $patlist ?>)</button></a>
             </div>
             <div class="col-lg-6 list-btn">
-            <a href="admin_applist.php"><button type="button" class="btn-large">Appointments (<?php echo $conlist ?>)</button></a>
+            <a href="admin_applist.php"><button type="button" class="btn-large">Appointments (<?php echo $applist ?>)</button></a>
             </div>
             <div class="col-lg-12 list-btn">
             <a href="admin_totalusers.php"><button type="button" class="btn-large">Total Users (<?php echo $allusers ?>)</button></a>

@@ -24,6 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $city = $_POST['city'];
     $cnic = $_POST['cnic'];
     $phone = $_POST['phone'];
+    $height = $_POST['height'];
+    $weight = $_POST['weight'];
     $dob = $_POST['dob'];
     $gender = $_POST['gender'];
     $qualification = $_POST['qualification'];
@@ -41,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $message = "A user with this e-mail already exists";
     } else {
 
-        $query = "insert into users (username,email,password,cnic,phone,dob,city,gender,role,qualification,specialization,experience,file,image,status,userid,fee)
-    value ('$username','$email','$password','$cnic','$phone','$dob','$city','$gender','$role','$qualification','$specialization','$experience','$file_name','$pic_name','$status','$userid','$fee')";
+        $query = "insert into users (username,email,password,cnic,phone,dob,city,gender,role,qualification,height,weight,specialization,experience,file,image,status,userid,fee)
+    value ('$username','$email','$password','$cnic','$phone','$dob','$city','$gender','$role','$qualification','$height','$weight','$specialization','$experience','$file_name','$pic_name','$status','$userid','$fee')";
 
         mysqli_query($conn, $query);
 
@@ -67,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <div class="form-group">
                     <h3>Consultant Sign Up</h3>
                     <label for="inputName">Full name</label>
-                    <input type="text" class="form-control" id="inputName" name="username" required>
+                    <input type="text" class="form-control" id="alphabetInput" name="username" required>
                 </div>
 
                 <div class="form-group">
@@ -82,8 +84,33 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 <div class="form-group">
                     <label for="inputPhone">Phone number</label>
-                    <input type="tel" class="form-control" maxlength="11" name="phone" id="inputPhone"
+                    <input type="tel" class="form-control" maxlength="11" name="phone" id="numericInput2"
                         placeholder="03*********" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dateofbirth">Height (cm)</label>
+                    <select class="form-control" name="height" id="heightSelect" required>
+                        <?php
+      for ($i = 50; $i <= 250; $i++) {
+        $selected = ($i == $height) ? 'selected' : '';
+        echo "<option value='$i' $selected>$i</option>";
+      }
+    ?>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="dateofbirth">Weight (kg)</label>
+                    <select class="form-control" name="weight" id="weightSelect" required>
+                        <?php
+      for ($i = 30; $i <= 300; $i++) {
+        $selected = ($i == $weight) ? 'selected' : '';
+        echo "<option value='$i' $selected>$i</option>";
+      }
+    ?>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -94,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 <div class="form-group">
                     <label for="inputCnic">CNIC</label>
-                    <input type="text" maxlength="13" class="form-control" name="cnic" id="inputCnic" required>
+                    <input type="text" maxlength="13" class="form-control" name="cnic" id="numericInput2" required>
                 </div>
 
                 <div class="form-group">
@@ -377,7 +404,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <option value="Pulmonologist">Pulmonologist</option>
                         <option value="Cardiologist">Cardiologist</option>
                         <option value="Neurologist">Neurologist</option>
-                        <option value="Orthopedic or neurosurgeon">Orthopedic or neurosurgeon</option>
+                        <option value="Orthopedic or neurosurgeon">Orthopedic</option>
                         <option value="Neurosurgeon">Neurosurgeon</option>
                         <option value="Infectious disease specialist">Infectious disease specialist</option>
                         <option value="Family medicine">Family medicine</option>
@@ -393,13 +420,23 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 <div class="form-group">
                     <label for="inputQualification">Experience (years)</label>
-                    <input type="text" maxlength="2" class="form-control" name="experience" id="inputCnic" required>
+                    <select id="experienceSelect" name="experience" class="form-control" required>
+                        <?php for ($i = 0; $i <= 30; $i++): ?>
+                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                        <?php endfor; ?>
+                    </select>
                 </div>
+
 
                 <div class="form-group">
                     <label for="inputQualification">Consultation fee</label>
-                    <input placeholder="PKR" type="text" maxlength="4" class="form-control" name="fee" id="" required>
+                    <select id="feeSelect" name="fee" class="form-control" required>
+                        <?php for ($i = 500; $i <= 5000; $i += 100): ?>
+                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                        <?php endfor; ?>
+                    </select>
                 </div>
+
 
                 <div class="form-group">
                     <label for="pdf_file">Resume File:</label>
@@ -417,10 +454,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </form>
 
             <div class="msg">
-                <?php if (isset($message)) {echo $message;}?>
+                <?php if (isset($message)) {echo $message;} ?>
             </div>
         </div>
     </div>
 </body>
 
 </html>
+
+
+<script>
+const inputField = document.querySelector("#alphabetInput");
+inputField.addEventListener("input", function() {
+    let value = inputField.value;
+    let letters = /^[A-Za-z\s]+$/;
+    if (!value.match(letters)) {
+        inputField.value = value.substring(0, value.length - 1);
+    }
+});
+</script>

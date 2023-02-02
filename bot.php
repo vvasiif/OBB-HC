@@ -102,7 +102,7 @@ $_SESSION['role'] = $role;
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="form-group col-lg-2">
-                            <select id="" class="form-control" name="sym1" required>
+                            <select id="select1" class="form-control" name="sym1" required>
                                 <option value="">Symptom 1</option>
                                 <option value="itching">Itching</option>
                                 <option value="skin_rash">Skin rash</option>
@@ -239,7 +239,7 @@ $_SESSION['role'] = $role;
                             </select>
                         </div>
                         <div class="form-group col-lg-2">
-                            <select id="" class="form-control" name="sym2" required>
+                            <select id="select2" class="form-control" name="sym2" required>
                                 <option value="">Symptom 2</option>
                                 <option value="itching">Itching</option>
                                 <option value="skin_rash">Skin rash</option>
@@ -376,7 +376,7 @@ $_SESSION['role'] = $role;
                             </select>
                         </div>
                         <div class="form-group col-lg-2">
-                            <select id="" class="form-control" name="sym3" required>
+                            <select id="select3" class="form-control" name="sym3" required>
                                 <option value="">Symptom 3</option>
                                 <option value="itching">Itching</option>
                                 <option value="skin_rash">Skin rash</option>
@@ -525,3 +525,6 @@ $_SESSION['role'] = $role;
 </body>
 
 </html>
+
+  
+</script>

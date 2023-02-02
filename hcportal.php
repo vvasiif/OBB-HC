@@ -27,140 +27,133 @@ if ($_SESSION['email'] == null) {
 }
 
 $dermatologist = 0;
-$query = "select * from users where role = 'con' && specialization = 'Dermatologist' ";
+$query = "select * from users where role = 'con' && specialization = 'Dermatologist'  && availability = 'available' && status = 'accept' ";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $dermatologist = $dermatologist + 1;
 }
 
 $immunologist = 0;
-$query = "select * from users where role = 'con' && specialization = 'Immunologist' ";
+$query = "select * from users where role = 'con' && specialization = 'Immunologist'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $immunologist = $immunologist + 1;
 }
 
 $gastroenterologist = 0;
-$query = "select * from users where role = 'con' && specialization = 'Gastroenterologist' ";
+$query = "select * from users where role = 'con' && specialization = 'Gastroenterologist'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $gastroenterologist = $gastroenterologist + 1;
 }
 
 $hivspecialist = 0;
-$query = "select * from users where role = 'con' && specialization = 'HIV specialist' ";
+$query = "select * from users where role = 'con' && specialization = 'HIV specialist'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $hivspecialist = $hivspecialist + 1;
 }
 
 $endocrinologist = 0;
-$query = "select * from users where role = 'con' && specialization = 'Endocrinologist' ";
+$query = "select * from users where role = 'con' && specialization = 'Endocrinologist'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $endocrinologist = $endocrinologist + 1;
 }
 
 $primarycarephysician = 0;
-$query = "select * from users where role = 'con' && specialization = 'Primary care physician' ";
+$query = "select * from users where role = 'con' && specialization = 'Primary care physician'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $primarycarephysician = $primarycarephysician + 1;
 }
 
 $pulmonologist = 0;
-$query = "select * from users where role = 'con' && specialization = 'Pulmonologist' ";
+$query = "select * from users where role = 'con' && specialization = 'Pulmonologist'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $pulmonologist = $pulmonologist + 1;
 }
 
 $cardiologist = 0;
-$query = "select * from users where role = 'con' && specialization = 'Cardiologist' ";
+$query = "select * from users where role = 'con' && specialization = 'Cardiologist'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $cardiologist = $cardiologist + 1;
 }
 
 $neurologist = 0;
-$query = "select * from users where role = 'con' && specialization = 'Neurologist' ";
+$query = "select * from users where role = 'con' && specialization = 'Neurologist'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $neurologist = $neurologist + 1;
 }
 
-$orthopedicorneurosurgeon = 0;
-$query = "select * from users where role = 'con' && specialization = 'Orthopedic or neurosurgeon' ";
+$orthopedic = 0;
+$query = "select * from users where role = 'con' && specialization = 'Orthopedic'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
-    $orthopedicorneurosurgeon = $orthopedicorneurosurgeon + 1;
+    $orthopedic= $orthopedic + 1;
 }
 
 $neurosurgeon = 0;
-$query = "select * from users where role = 'con' && specialization = 'Neurosurgeon' ";
+$query = "select * from users where role = 'con' && specialization = 'Neurosurgeon'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $neurosurgeon = $neurosurgeon + 1;
 }
 
 $infectiousdiseasespecialist = 0;
-$query = "select * from users where role = 'con' && specialization = 'Infectious Disease Specialist' ";
+$query = "select * from users where role = 'con' && specialization = 'Infectious Disease Specialist'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $infectiousdiseasespecialist = $infectiousdiseasespecialist + 1;
 }
 
 $familymedicine = 0;
-$query = "select * from users where role = 'con' && specialization = 'Family Medicine' ";
+$query = "select * from users where role = 'con' && specialization = 'Family Medicine'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $familymedicine = $familymedicine + 1;
 }
 
 $proctologist = 0;
-$query = "select * from users where role = 'con' && specialization = 'Proctologist' ";
+$query = "select * from users where role = 'con' && specialization = 'Proctologist'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $proctologist = $proctologist + 1;
 }
 
-$cardiologist = 0;
-$query = "select * from users where role = 'con' && specialization = 'Cardiologist' ";
-$run = mysqli_query($conn, $query);
-while ($row = mysqli_fetch_array($run)) {
-    $cardiologist = $cardiologist + 1;
-}
-
 $phlebologist = 0;
-$query = "select * from users where role = 'con' && specialization = 'Phlebologist' ";
+$query = "select * from users where role = 'con' && specialization = 'Phlebologist'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $phlebologist = $phlebologist + 1;
 }
 
 $orthopedicsurgeon = 0;
-$query = "select * from users where role = 'con' && specialization = 'Orthopedic Surgeon' ";
+$query = "select * from users where role = 'con' && specialization = 'Orthopedic Surgeon'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $orthopedicsurgeon = $orthopedicsurgeon + 1;
 }
 
 $rheumatologist = 0;
-$query = "select * from users where role = 'con' && specialization = 'Rheumatologist' ";
+$query = "select * from users where role = 'con' && specialization = 'Rheumatologist'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $rheumatologist = $rheumatologist + 1;
 }
 
 $ent = 0;
-$query = "select * from users where role = 'con' && specialization = 'ENT' ";
+$query = "select * from users where role = 'con' && specialization = 'ENT'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $ent = $ent + 1;
 }
 
 $urologist = 0;
-$query = "select * from users where role = 'con' && specialization = 'Urologist' ";
+$query = "select * from users where role = 'con' && specialization = 'Urologist'  && availability = 'available' && status = 'accept'";
 $run = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_array($run)) {
     $urologist = $urologist + 1;
@@ -217,9 +210,9 @@ while ($row = mysqli_fetch_array($run)) {
                                 <li><a href="specialitylist.php?specialization=Neurologist"><button type="button"
                                             class="btn-large">Neurologist
                                             <?php echo "(" . $neurologist . " available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Orthopedic or neurosurgeon"><button
-                                            type="button" class="btn-large">Orthopedic or Neurosurgeon
-                                            <?php echo "(" . $orthopedicorneurosurgeon . " available)" ?></button></a>
+                                <li><a href="specialitylist.php?specialization=Orthopedic"><button
+                                            type="button" class="btn-large">Orthopedic
+                                            <?php echo "(" . $orthopedic . " available)" ?></button></a>
                                 </li>
                                 <li><a href="specialitylist.php?specialization=Neurosurgeon"><button type="button"
                                             class="btn-large">Neurosurgeon
@@ -235,9 +228,6 @@ while ($row = mysqli_fetch_array($run)) {
                                 <li><a href="specialitylist.php?specialization=Proctologist"><button type="button"
                                             class="btn-large">Proctologist
                                             <?php echo "(" . $proctologist . " available)" ?></button></a></li>
-                                <li><a href="specialitylist.php?specialization=Cardiologist"><button type="button"
-                                            class="btn-large">Cardiologist
-                                            <?php echo "(" . $cardiologist . " available)" ?></button></a></li>
                                 <li><a href="specialitylist.php?specialization=Phlebologist"><button type="button"
                                             class="btn-large">Phlebologist
                                             <?php echo "(" . $phlebologist . " available)" ?></button></a></li>

@@ -39,7 +39,7 @@ $specialization = $_GET['specialization'];
         <div class="row">
             <?php
         $count = 0;
-                $query = "select * from users where role = 'con' && specialization = '$specialization' && status = 'accept'";
+                $query = "select * from users where role = 'con' && specialization = '$specialization' && status = 'accept' && availability = 'available'";
                 $run = mysqli_query($conn,$query);
                 while($row = mysqli_fetch_array($run)){
                     $picture_filename = $row['image'];
